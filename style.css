@@ -1,0 +1,690 @@
+/* UNIVERSAL */
+* {
+    box-sizing: border-box; 
+    margin: 0;
+    padding: 0;
+ }
+ 
+html {
+     font-size: 16px;
+     -webkit-font-smoothing: antialiased;
+ }
+ 
+body {
+     background-color: #ededed;
+     margin: 30px 30px;
+     overflow-x: hidden; /* Prevent horizontal overflow */
+ }
+ 
+@media (max-width: 576px) {
+     body {
+         margin: 30px 20px;
+         padding: 0 0; /* Adjust this value to match the height of your header on mobile */
+     }
+ }
+
+ 
+ 
+/* NAV - Desktop */
+header {
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     width: 100%;
+ }
+ 
+.nav {
+     font-family: Helvetica, sans-serif;
+     font-weight: 400;
+     text-align: left;
+     letter-spacing: .5px;
+     width: 100%;
+ }
+
+#bb-menu {
+    list-style-type: none; /* Remove default list styling */
+    display: flex; /* Use Flexbox */
+    justify-content: space-between; /* Evenly distribute space between items */
+    align-items: center;
+    margin: 0; /* Remove any default margin */
+    padding: 0; /* Remove any default padding */
+    padding-bottom: 20px;
+    border-bottom: 1px solid black;
+}
+ 
+.nav-item {
+    margin: 0; /* Ensure no extra margin */
+}
+
+/* Style for the anchor links */
+.nav-item a {
+    color: black; /* Text color */
+    text-decoration: none; /* Remove underline from links */
+    display: block; /* Ensure links take up the full height of the list item */
+    text-align: center; /* Center the text inside the link */
+}
+
+#nav-contact{
+    display: block;
+}
+ 
+/* NAV - MOBILE */
+@media (max-width: 576px) {
+    #nav-contact{
+        display: none;
+    }
+ }
+
+/* UNIVERSAL CONTENT CONTAINER */
+.bb-content{
+    margin-top: 10px;
+    max-width: 100%;
+    position: relative;
+    height: auto;
+}
+
+@media (max-width: 576px) {
+    .bb-content{
+        margin: 0 0;
+        padding: 0 0;
+        width: 100%;
+        position: relative;
+        height: auto;
+    }
+}
+
+/* Fonts-Page */
+
+#hero-img{
+    width: 100%;
+    height: 35vw; /* Makes the container take up the full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensures no content spills outside */
+    margin-top: 20px;
+}
+
+#hero-img-mob{
+    display: none;
+}
+
+#hero-1 {
+    width: 100%;
+    height: 100%; /* Keeps aspect ratio */
+    object-fit: cover; /* Ensures the image covers the container while cropping the excess */
+}
+
+
+.fonts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 20px; /* Space between grid items */
+    margin-top: 20px;
+}
+
+
+.font-item { /* Use a class for all font blocks */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.font-header{
+    width: 100%;
+    height: auto;
+    position: relative; /* Ensures proper positioning */
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.font-header img{
+    position: relative; /* Ensures proper positioning */
+    width: auto;
+    height: 8vw;
+}
+
+/* Font Info */
+.font-info {
+    display: flex;
+    flex-direction: row; /* Adjust to vertical column */
+    width: 100%;
+    align-items: center; /* Align to the left */
+    justify-content: center;
+}
+
+.font-info p {
+    font-family: Helvetica, sans-serif;
+    color: black;
+    font-size: 0.75em;
+    margin: 0; /* Add some space between paragraphs */
+    padding: 0px 10px;
+    transform: translateY(2px);
+}
+
+.font-title,
+.font-type,
+.font-characters,
+.font-date {
+    flex: 1 0 0;
+    text-align: center;
+}
+
+@media (max-width: 576px) {
+    .fonts {
+        grid-template-columns: 1fr; /* Switch to 1 column on mobile */
+    }
+
+    .font-header{
+        padding-bottom: 10px;
+    }
+
+    .font-header img{
+        height: 13vw;
+    }
+
+    .font-info {
+        flex-direction: column; /* Ensure vertical alignment */
+        align-items: center;
+    }
+
+    .font-info p {
+        padding-top: 5px;
+    }
+
+}
+
+
+/*Font Pages*/
+
+/* Font Specimen */
+
+#matter-container {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    background-size: 20px 20px;
+    background-image:
+    linear-gradient(to right, black 1px, transparent 1px),
+    linear-gradient(to bottom, black 1px, transparent 1px);
+    background-color: #ededed;
+    margin-top: 50px;
+}
+
+#svgs {
+    display: none;
+}
+
+/* Type Tester */
+
+.bb-tester{
+    margin: 50px 0px;
+    width: 100%;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.control-panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 10px;
+    padding-left: 15px;
+  }
+
+.control-panel > div {
+    background-color: #ededed;
+    padding: 10px 0px;
+    font-size: 0.6em;
+    white-space: nowrap;
+}
+
+.control-panel > div:last-child {
+    border-right: none;
+}
+  
+.range-slider{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: auto;
+    margin-right: 4em;
+}
+
+.range-slider h2{
+    font-family: Helvetica, sans-serif;
+    font-weight: normal;
+    margin-right: 1em;
+}
+
+.range-value{
+    padding-left: 1em;
+}
+
+.color-btns {
+    align-items: left;
+}
+
+.range-slider-bar {
+    -webkit-appearance: none;
+    width: 180px;
+    height: 100%;
+    border-radius: 20px;
+    border: 1px solid black;
+    background: #ededed;
+}
+  
+.range-slider-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: black;
+    border: 2px solid black;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+/* PE-Slider-Icons */
+
+.pe-svg{
+    height: 12px;
+    width: auto;
+    padding: 0px 10px;
+}
+  
+.typing-area {
+    color: #000000;
+    outline: none;
+    font-size: 120px;
+    line-height: 150px;
+    letter-spacing: 0px;
+    text-align: center;
+    overflow: hidden;
+}
+
+#d2d-area {
+    font-family: dot2dot;
+}
+
+#kilt-area {
+    font-family: kilt-vf;
+    font-variation-settings: 'wght' 150;
+}
+
+#pe-area {
+    font-size: 100px;
+    line-height: 120px;
+    font-family: pe-vf;
+    font-variation-settings: 
+        'DOTW' 0,
+        'BARW' 0;
+}
+
+#d2d-text, #kilt-text, #pe-text{
+    display: block;
+}
+
+#d2d-text-mob, #kilt-text-mob, #pe-text-mob{
+    display: none;
+}
+
+/* Font Description */
+
+.bb-description {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin: 100px 0;
+    width: 100%;
+}
+
+.font-abt{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.font-details {
+    font-family: monospace;
+    padding: 0 50px;
+    text-align: center;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+.font-name{
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    color: #d82d19;
+}
+
+.details-container a{
+    color: black;
+}
+
+/* Download-button */
+
+.download-area{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#bloopy-dwn-btn{
+    transform: translateX(40px);
+    width: 40%;
+    height: auto;
+}
+
+/*d2d Page Mob*/
+
+@media (max-width: 576px){
+
+    /*Hero-img*/
+    #hero-img{
+        display: none;
+    }
+
+    #hero-img-mob{
+        width: 100%;
+        height: auto; /* Makes the container take up the full viewport height */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden; /* Ensures no content spills outside */
+        margin-top: 20px;
+        display: block;
+    }
+    
+    /* Font Specimen */
+    #matter-container {
+        display: none;
+    }
+
+    /* Type Tester */
+    .bb-tester{
+        margin: 20px 0px;
+    }
+
+    .typing-area {
+        font-size: 50px;
+        line-height: 72px;
+        letter-spacing: 0px;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    #pe-area {
+        font-size: 50px;
+        line-height: 75px;
+    }
+
+    .range-value{
+        display: none;
+    }
+
+    .bb-description{
+        margin: 50px 0px;
+    }
+
+    #d2d-text, #kilt-text, #pe-text{
+        display: none;
+    }
+    
+    #d2d-text-mob, #kilt-text-mob, #pe-text-mob{
+        display: block;
+    }
+
+    #bloopy-dwn-btn{
+        display: none;
+    }
+
+}
+
+/* About  Page */
+
+#abt-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.abt-layout {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%; /* Ensure it takes the full width of the parent */
+    max-width: 500px;
+    height: auto; /* Automatically adjust the height */
+    margin-bottom: 50px;
+    border-top: 1px solid black;
+    padding-top: 20px;
+}
+
+.abt-header{
+    font-family: Helvetica, sans-serif;
+    font-size: 18px;
+    background-color: none; /* Optional: Add a background color */
+    padding-bottom: 18px;
+}
+
+.about-text-container{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Arrange its children vertically */
+    justify-content: center;
+    padding-right: 30px;
+}
+
+.about-column{
+    font-family: monospace;
+    font-size: 0.75em;
+    max-width: 480px;
+}
+
+.abt-riv {
+    position: relative;
+    width: 100%; /* Ensure it takes the full width of the parent */
+    height: auto; /* Automatically adjust the height */
+}
+
+.abt-canvas {
+    display: block; /* Ensure it is displayed as a block element */
+    width: 100%; /* Ensure it takes the full width of the parent */
+    height: auto; /* Automatically adjust the height */
+    max-width: 750px;
+}
+
+/* About  Page - Rivs */
+
+/* Section 01 */
+.about-copy a{
+    color: black;
+    transition: 0.2s ease-in;
+}
+
+.about-copy a:hover{
+    color: rgb(255, 0, 200);
+    transition: 0.2s ease-out;
+}
+
+/* Section 04 */
+
+/* Section 05 */
+#abt-canvas-5{
+    max-width: 750px;
+}
+
+#abt-5-cl-2{
+    position: absolute;
+    bottom: 30%;
+    left: 25%
+}
+
+#abt-5-cl-2 a{
+    color: blue;
+}
+
+/*About Page - MOB*/
+@media (max-width: 576px){
+
+}
+
+/* Journal Page*/
+
+#journal-title{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    margin-bottom: 0;
+    transform: translateY(-30px);
+}
+
+#journal-gif{
+    max-width: 80vw;
+}
+
+.journal-entries{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    height: auto;
+    align-items: flex-start;
+}
+
+.journal-col{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    justify-content: flex-start;
+    width: 50%;
+    max-width: 400px;
+}
+
+#journal-col-1{
+    margin-right: 3em;
+    align-items: flex-start;
+}
+
+#journal-col-2{
+    align-items: flex-end;
+}
+
+.entry{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.entry-r{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    margin-bottom: 1em;
+    justify-content: flex-end;
+}
+
+.pencil {
+    position: relative;
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: space-around; /* Distribute space between elements */
+    width: 500px;
+    height: 40px; /* Adjust this value according to the actual height of your pencil image */
+    background-image: url(journal/svgs/bb24_journal-pencil_V1.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain; /* or cover, depending on your design */
+    overflow: visible;
+}
+
+.entry-button{
+    position: relative;
+    display: block;
+    font-family: monospace;
+    font-size: 0.8em;
+    text-align: center;
+    border: 2px solid black;
+    width: 20%;
+    border-radius: 12px;
+    padding: 10px 20px;
+    transform: translateX(-10px);
+}
+
+.entry-button a{
+    color: #000000;
+}
+
+.entry-date {
+    position: relative;
+    flex: 1 1 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 0.5em;
+    height: 100%; /* Make sure it spans the full height of the pencil */
+    padding-left: 20px;
+}
+
+.entry-bloopy {
+    position: relative;
+    display: flex;
+    flex: 1 1 0;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Distribute space between elements */
+    height: 0.9em; /* Adjust this value according to the actual height of your pencil image */
+    background-image: url(journal/svgs/bb24_Journal-Bloopy.svg);
+    background-repeat: no-repeat;
+    background-size: contain; /* or cover, depending on your design */
+    overflow: visible;
+    transform: translateX(12px);
+}
+
+/*Journal - Mob*/
+@media (max-width: 576px){
+    #journal-title{
+        transform: translateY(0px);
+        margin: 10px 0px;
+    }
+    
+    .journal-entries{
+        flex-direction: column;
+    }
+
+    .journal-col {
+        width: 100%;
+    }
+}

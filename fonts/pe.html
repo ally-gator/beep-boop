@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Pocket Electronic</title>
+        <link rel="stylesheet" type="text/css" href="../styles/normalize.css">
+        <link rel="stylesheet" type="text/css" href="../styles/fonts.css">
+        <link rel="stylesheet" type="text/css" href="../style.css">
+        <link rel="icon" type="image/x-icon" href="../assets/svgs/bb24_fav-icon.svg">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <header>
+            <div class="nav">
+                <ul id="bb-menu">
+                    <li class="nav-item"><a href="index.html"><img src="../assets/logos/bb24-glasses-dots.svg" height="25"></a></li>
+                    <li class="nav-item"><a href="../index.html">Fonts</a></li>
+                    <li class="nav-item"><a href="../about.html">About</a></li>
+                    <li class="nav-item"><a href="../journal/journal.html">Journal</a></li>
+                    <li class="nav-item"><a href="https://www.instagram.com/bb.otf/" target="_blank">Instagram</a></li>
+                    <li class="nav-item" id="nav-contact"><a href="mailto: abc@bb-fonts.com">Contact</a></li>
+                </ul>
+            </div>
+        </header> 
+
+        <div class="bb-content">
+
+            <div id="hero-img">
+                <img src="../assets/pe-page/BB24_PE01_Hero.png" alt="hero-image" id="hero-1">
+            </div>
+
+            <div id="hero-img-mob">
+                <img src="../assets/pe-page/BB24_PE01_Hero-mob.png" alt="hero-image" id="hero-1">
+            </div>
+
+            <div class="bb-tester">
+                <div class="control-panel">
+                    <div class="range-slider" id="size">
+                        <h2>SIZE:</h2>
+                        <input class="range-slider-bar" type="range" id="size-slider" min="0" max="120" value="60" oninput="updateSize(this.value)">
+                        <!-- <h2 id="size-value" class="range-value">72px</h2> -->
+                    </div>
+                    <div class="range-slider" class="leading">
+                        <h2>LEADING:</h2>
+                        <input class="range-slider-bar" type="range" id="leading-slider" min="0" max="200" value="100" oninput="updateLineHeight(this.value)">
+                    </div>
+                    <div class="range-slider" class="dot-slider">
+                        <img src="../assets/pe-page/svgs/pe-dot.svg" alt="DOT" class="pe-svg">
+                        <input class="range-slider-bar" type="range" id="dot-slider" min="0" max="100" value="0" oninput="updateDotSharpness(this.value)">
+                        <img src="../assets/pe-page/svgs/pe-sqr.svg" alt="SQR" class="pe-svg">
+                    </div>
+                    <div class="range-slider" class="kerning">
+                        <img src="../assets/pe-page/svgs/pe-rd-bar.svg" alt="RND-BAR" class="pe-svg">
+                        <input class="range-slider-bar" type="range" id="bar-slider" min="0" max="100" value="0" step="1" oninput="updateBarSharpness(this.value)">
+                        <img src="../assets/pe-page/svgs/pe-bar.svg" alt="BAR" class="pe-svg">
+                    </div>
+                </div>
+                <div class="typing-area" id="pe-area" contenteditable="true">
+                    <p class="pe-type" id="pe-text">A vintage computer quietly buzzed, solving complex math with jittery, frozen graphics</p>
+                    <p class="pe-type" id="pe-text-mob">A vintage computer queitly  buzzes</p>
+                </div>
+            </div>
+
+            <div class="bb-description">
+                <div class="font-abt">
+                    <p class="font-details">
+                    <span class="font-name">Pocket Electronic: A font that fits in your pencil case!</span>
+                    <br><br>
+                    It's a variable font that draws inspiration from the classic, sharpe LED displays our mathmalete selves knew and loved. It merges the precision of sharp-edged numerals with the softness of a rounded dot-matrix aesthetic, offering flexibility for any design. 
+                    <br><br>
+                    Whether you're aiming for a retro-tech feel or a clean digital vibe, Pocket Electronic adapts seamlessly, giving you control over its edges and mood. 
+                    <br><br>
+                    For projects that need a touch of nostalgia with a modern twist. 🧮
+                    </p>
+                </div>
+
+                <div class="download-area">
+                    <canvas id="bloopy-dwn-btn" width="630" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Script: Rives -->
+        <script src="https://cdn.jsdelivr.net/npm/@rive-app/canvas@latest/rive.js"></script>
+        <script src="../scripts/pe.js"></script>
+
+    </body>
+</html>

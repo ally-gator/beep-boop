@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Kilt</title>
+        <link rel="stylesheet" type="text/css" href="../styles/normalize.css">
+        <link rel="stylesheet" type="text/css" href="../styles/fonts.css">
+        <link rel="stylesheet" type="text/css" href="../style.css">
+        <link rel="icon" type="image/x-icon" href="../assets/svgs/bb24_fav-icon.svg">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <header>
+            <div class="nav">
+                <ul id="bb-menu">
+                    <li class="nav-item"><a href="index.html"><img src="../assets/logos/bb24-glasses-dots.svg" height="25"></a></li>
+                    <li class="nav-item"><a href="../index.html">Fonts</a></li>
+                    <li class="nav-item"><a href="../about.html">About</a></li>
+                    <li class="nav-item"><a href="../journal/journal.html">Journal</a></li>
+                    <li class="nav-item"><a href="https://www.instagram.com/bb.otf/" target="_blank">Instagram</a></li>
+                    <li class="nav-item" id="nav-contact"><a href="mailto: abc@bb-fonts.com">Contact</a></li>
+                </ul>
+            </div>
+        </header> 
+
+        <div class="bb-content">
+
+            <div id="hero-img">
+                <img src="../assets/kilt-page/hero/KILT-hero.png" alt="hero-image" id="hero-1">
+            </div>
+
+            <div id="hero-img-mob">
+                <img src="../assets/kilt-page/hero/KILT-hero-mob.png" alt="hero-image" id="hero-1">
+            </div>
+
+            <div class="bb-tester">
+                <div class="control-panel">
+                    <div class="range-slider" id="size">
+                        <h2>SIZE:</h2>
+                        <input class="range-slider-bar" type="range" id="size-slider" min="0" max="240" value="120" oninput="updateSize(this.value)">
+                        <!-- <h2 id="size-value" class="range-value">72px</h2> -->
+                    </div>
+                    <div class="range-slider" id="leading">
+                        <h2>LEADING:</h2>
+                        <input class="range-slider-bar" type="range" id="leading-slider" min="0" max="300" value="150" oninput="updateLineHeight(this.value)">
+                        <!-- <h2 id="leading-value" class="range-value">150px</h2> -->
+                    </div>
+                    <div class="range-slider" id="kerning">
+                        <h2>WEIGHT:</h2>
+                        <input class="range-slider-bar" type="range" id="weight-slider" min="100" max="200" value="0" step="1" oninput="updateFontWeight(this.value)">
+                        <!-- <h2 id="weight-value" class="range-value">150</h2> -->
+                    </div>
+                </div>                
+                <div class="typing-area" id="kilt-area" contenteditable="true">
+                    <p class="kilt-type" id="kilt-text">My granny wove six dozen plaid shirts before she quilt</p>
+                    <p class="kilt-type" id="kilt-text-mob">My granny wove six dozen shirts</p>
+                </div>
+            </div>
+
+            <div class="bb-description">
+                <div class="font-abt">
+                    <p class="font-details">
+                    <span class="font-name">Kilt: A Twist on Tradition</span>
+                    <br><br>
+                    Kilt is a unique cross-stitch-inspired typeface that blends the warmth of traditional craft with the precision of digital design.
+                    <br><br>
+                    What sets Kilt apart is its variable stitch thickness, allowing for flexibility in weight. It could be decorative, or practical, have some fun. The typeface includes a full set of all caps lowercase, numbers, and punctuation.
+                    <br><br>
+                    The project was born out of a deep obsession with tartan where the intricately construced weaves gave initial inspiration for the grid-based design.
+                    </p>
+                </div>
+
+                <div class="download-area">
+                    <canvas id="bloopy-dwn-btn" width="630" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Script: Rives -->
+        <script src="https://cdn.jsdelivr.net/npm/@rive-app/canvas@latest/rive.js"></script>
+        <script src="../scripts/kilt.js"></script>
+
+    </body>
+</html>

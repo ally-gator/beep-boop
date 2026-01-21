@@ -1,0 +1,34 @@
+/* fonts */
+
+@font-face {
+    font-family: 'dot2dot';
+    src: url('../assets/fonts/dot2dot/WOFF/dot2dot-Regular.woff2') format('woff2'),
+         url('../assets/fonts/dot2dot/WOFF/dot2dot-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NectoMono';
+    src: url('../assets/fonts/CLT-NectoMono/NectoMono-Regular.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'kilt-vf';
+    src: url('../assets/fonts/Kilt/KiltVF.woff2') format('woff2'),
+         url('../assets/fonts/Kilt/KiltVF.ttf') format('truetype');
+    font-weight: 100 200; /* Specifies the range of weight (wght axis) */
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'pe-vf';
+    src: url('../assets/fonts/Pocket-Electronic/PocketElectronicVF.woff2') format('woff2'),
+         url('../assets/fonts/Pocket-Electronic/PocketElectronicVF.ttf') format('truetype');
+    font-style: normal;
+    font-variation-settings: 
+        'DOTW' 0, /* default value for Dot Sharpness */
+        'BARW' 0; /* default value for Bar Sharpness */
+  }
