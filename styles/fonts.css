@@ -16,6 +16,20 @@
 }
 
 @font-face {
+    font-family: 'UniFont';
+    src: url('../assets/fonts/Unifont/unifont-17.0.03.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'UniEmoji';
+    src: url('../assets/fonts/Unifont/unifont_upper-17.0.03.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'kilt-vf';
     src: url('../assets/fonts/Kilt/KiltVF.woff2') format('woff2'),
          url('../assets/fonts/Kilt/KiltVF.ttf') format('truetype');

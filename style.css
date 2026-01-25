@@ -11,85 +11,110 @@ html {
  }
  
 body {
-     background-color: #ededed;
-     margin: 30px 30px;
-     overflow-x: hidden; /* Prevent horizontal overflow */
+     background-color: #E8C5B9;
+     margin: 0;
+     padding: 0;
+     overflow-x: hidden;
+     display: flex;
  }
- 
-@media (max-width: 576px) {
-     body {
-         margin: 30px 20px;
-         padding: 0 0; /* Adjust this value to match the height of your header on mobile */
-     }
- }
-
- 
  
 /* NAV - Desktop */
 header {
      display: flex;
-     flex-direction: row;
+     flex-direction: column;
      align-items: center;
-     width: 100%;
+     width: 180px; /* Fixed width for sidebar */
+     min-height: 100vh;
+     padding: 30px 0;
+     border-right: 1px solid black;
+     position: fixed;
+     left: 0;
+     top: 0;
  }
  
 .nav {
-     font-family: Helvetica, sans-serif;
-     font-weight: 400;
-     text-align: left;
+     font-family: UniFont, Helvetica, sans-serif;
+     font-weight: 700;
+     text-align: center;
      letter-spacing: .5px;
      width: 100%;
  }
 
 #bb-menu {
-    list-style-type: none; /* Remove default list styling */
-    display: flex; /* Use Flexbox */
-    justify-content: space-between; /* Evenly distribute space between items */
+    list-style-type: none;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
     align-items: center;
-    margin: 0; /* Remove any default margin */
-    padding: 0; /* Remove any default padding */
-    padding-bottom: 20px;
-    border-bottom: 1px solid black;
+    gap: 10px; /* Space between items */
+    margin: 0;
+    padding: 0;
 }
  
 .nav-item {
-    margin: 0; /* Ensure no extra margin */
+    margin: 0;
+}
+
+.nav-item:first-child {
+    margin-bottom: 20px; /* Adjust this value to your preference */
 }
 
 /* Style for the anchor links */
 .nav-item a {
-    color: black; /* Text color */
-    text-decoration: none; /* Remove underline from links */
-    display: block; /* Ensure links take up the full height of the list item */
-    text-align: center; /* Center the text inside the link */
+    display: inline-block;
+    transition: transform 0.3s ease;
 }
 
-#nav-contact{
-    display: block;
+/* Wiggle animation on hover for all nav items except the first (logo) */
+.nav-item:not(:first-child) a:hover {
+    animation: wiggle 0.4s ease-in-out;
 }
- 
-/* NAV - MOBILE */
-@media (max-width: 576px) {
-    #nav-contact{
-        display: none;
-    }
- }
+
+@keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    10% { transform: rotate(-5deg); }
+    30% { transform: rotate(5deg); }
+    50% { transform: rotate(-4deg); }
+    70% { transform: rotate(4deg); }
+    90% { transform: rotate(-2deg); }
+}
 
 /* UNIVERSAL CONTENT CONTAINER */
-.bb-content{
+.bb-content {
+    margin-left: 180px; /* Same as header width */
     margin-top: 10px;
-    max-width: 100%;
+    padding: 30px;
+    max-width: calc(100% - 180px); /* Responsive width accounting for sidebar */
+    width: 100%;
     position: relative;
     height: auto;
+    box-sizing: border-box;
 }
 
+/* Mobile adjustments */
 @media (max-width: 576px) {
-    .bb-content{
-        margin: 0 0;
-        padding: 0 0;
-        width: 100%;
+    body {
+        flex-direction: column;
+    }
+    
+    header {
         position: relative;
-        height: auto;
+        width: 100%;
+        min-height: auto;
+        border-right: none;
+        border-bottom: 1px solid black;
+        padding: 20px 0;
+    }
+    
+    #bb-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .bb-content {
+        margin-left: 0;
+        max-width: 100%;
+        padding: 20px;
     }
 }
 
@@ -141,12 +166,6 @@ header {
     padding-bottom: 20px;
     display: flex;
     justify-content: center;
-}
-
-.font-header img{
-    position: relative; /* Ensures proper positioning */
-    width: auto;
-    height: 8vw;
 }
 
 /* Font Info */
@@ -334,43 +353,148 @@ header {
     display: none;
 }
 
-/* Font Description */
-
-.bb-description {
-    position: relative;
+/* FONTS SECTION */
+.fonts {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    justify-content: center;
-    margin: 100px 0;
+    gap: 40px;
     width: 100%;
 }
 
-.font-abt{
-    position: relative;
+/* Individual font header */
+.font-header {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    align-items: stretch;
     width: 100%;
+    min-height: 300px;
 }
 
-.font-details {
-    font-family: monospace;
-    padding: 0 50px;
+/* Corner SVGs - explicit dimensions from source */
+.border-corner-left,
+.border-corner-right {
+    flex-shrink: 0;
+    width: 150.16px; /* Match viewBox width exactly */
+    height: 300px; /* Match viewBox height exactly */
+}
+
+/* Middle content area - stretches horizontally */
+.font-header-content {
+    flex-grow: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Top and bottom black borders */
+.font-header-top-border,
+.font-header-bottom-border {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background-color: black;
+}
+
+.font-header-top-border {
+    top: 0;
+}
+
+.font-header-bottom-border {
+    bottom: 0;
+}
+
+/* Font information */
+.font-info {
     text-align: center;
-    font-size: 0.9em;
-    line-height: 1.5;
+    z-index: 1;
+    padding: 0 40px;
 }
 
-.font-name{
-    font-family: Helvetica, sans-serif;
+.font-name {
+    font-size: 5rem;
+    letter-spacing: 0.1em;
+    margin: 0 0 20px 0;
     font-weight: bold;
-    color: #d82d19;
 }
 
-.details-container a{
-    color: black;
+.font-meta {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    font-family: monospace;
+    font-size: 1rem;
+}
+
+/* Font-specific styles */
+#font-bezi .font-name {
+    font-family: bezi-vf, monospace;
+}
+
+#font-kilt .font-name {
+    font-family: kilt-vf, monospace;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .font-header {
+        min-height: 200px;
+    }
+    
+    .border-corner-left,
+    .border-corner-right {
+        width: 100px;
+        height: 200px;
+    }
+    
+    .font-header-top-border,
+    .font-header-bottom-border {
+        height: 13.33px;
+    }
+    
+    .font-name {
+        font-size: 3rem;
+    }
+    
+    .font-meta {
+        flex-direction: column;
+        gap: 10px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .fonts {
+        gap: 20px;
+    }
+    
+    .font-header {
+        min-height: 150px;
+    }
+    
+    .border-corner-left,
+    .border-corner-right {
+        width: 75px;
+        height: 150px;
+    }
+    
+    .font-header-top-border,
+    .font-header-bottom-border {
+        height: 10px;
+    }
+    
+    .font-name {
+        font-size: 2rem;
+    }
+    
+    .font-info {
+        padding: 0 20px;
+    }
+    
+    .font-meta {
+        font-size: 0.7rem;
+        gap: 8px;
+    }
 }
 
 /* Download-button */
