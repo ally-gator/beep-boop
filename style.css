@@ -11,7 +11,7 @@ html {
  }
  
 body {
-     background-color: #E8C5B9;
+     background-color: #ebbdb0;
      margin: 0;
      padding: 0;
      overflow-x: hidden;
@@ -26,7 +26,7 @@ header {
      width: 180px; /* Fixed width for sidebar */
      min-height: 100vh;
      padding: 30px 0;
-     border-right: 1px solid black;
+     border-right: 3px solid black;
      position: fixed;
      left: 0;
      top: 0;
@@ -80,16 +80,15 @@ header {
 
 /* UNIVERSAL CONTENT CONTAINER */
 .bb-content {
-    margin-left: 180px; /* Same as header width */
-    margin-top: 10px;
+    margin-left: 210px; /* Same as header width */
     padding: 30px;
     max-width: calc(100% - 180px); /* Responsive width accounting for sidebar */
-    width: 100%;
+    width: calc(100% - 180px);
     position: relative;
     height: auto;
     box-sizing: border-box;
+    overflow: hidden;
 }
-
 /* Mobile adjustments */
 @media (max-width: 576px) {
     body {
@@ -120,102 +119,184 @@ header {
 
 /* Fonts-Page */
 
-#hero-img{
-    width: 100%;
-    height: 35vw; /* Makes the container take up the full viewport height */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* Ensures no content spills outside */
-    margin-top: 20px;
-}
 
-#hero-img-mob{
-    display: none;
-}
-
-#hero-1 {
-    width: 100%;
-    height: 100%; /* Keeps aspect ratio */
-    object-fit: cover; /* Ensures the image covers the container while cropping the excess */
-}
-
-
+/* FONTS SECTION */
 .fonts {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
-    gap: 20px; /* Space between grid items */
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
 }
 
-
-.font-item { /* Use a class for all font blocks */
+/* Individual font header */
+.font-header {
+    display: flex;
+    align-items: stretch;
     width: 100%;
+    min-height: 300px;
+}
+
+/* Corner SVGs - explicit dimensions from source */
+.border-corner-left,
+.border-corner-right {
+    flex-shrink: 0;
+    width: 150.16px; /* Match viewBox width exactly */
+    height: 300px; /* Match viewBox height exactly */
+}
+
+/* Middle content area - stretches horizontally */
+.font-header-content {
+    flex-grow: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Top and bottom black borders */
+.font-header-top-border,
+.font-header-bottom-border {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background-color: black;
+}
+
+.font-header-top-border {
+    top: 0;
+}
+
+.font-header-bottom-border {
+    bottom: 0;
+}
+
+/* Font Link*/
+
+.font-header-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.font-header-link:hover {
+    transform: translateY(-5px);
+    opacity: 0.9;
+}
+
+.font-header-link:hover .font-name {
+    color: #01924f;
+    transition: color 0.3s ease;
+}
+
+.font-header-link:hover .font-name {
+    animation-play-state: paused; /* Optional: pause animation on hover */
+}
+
+/* Font information */
+.font-info {
+    text-align: center;
+    z-index: 1;
+    /* padding: 0 40px; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    border: 1px solid black;
-    padding: 20px;
+    width: 100%;
+    min-height: 150px; /* Minimum height instead of fixed */
 }
 
-.font-header{
-    width: 100%;
-    height: auto;
-    position: relative; /* Ensures proper positioning */
-    padding-bottom: 20px;
+.font-name {
+    font-size: clamp(5rem, 10vw, 10rem);
+    letter-spacing: 0.05em;
+    margin: 0;
+    font-weight: normal;
+    line-height: 1;
+}
+
+.font-meta {
     display: flex;
     justify-content: center;
+    gap: clamp(80px, 18vw, 240px);
+    font-size: 1.5rem;
+    margin-top: auto; /* This pushes it to the bottom with consistent spacing */
 }
 
-/* Font Info */
-.font-info {
+.font-meta span {
     display: flex;
-    flex-direction: row; /* Adjust to vertical column */
-    width: 100%;
-    align-items: center; /* Align to the left */
-    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-family: UniFont, Helvetica, sans-serif;
+    white-space: nowrap;
 }
 
-.font-info p {
-    font-family: Helvetica, sans-serif;
-    color: black;
-    font-size: 0.75em;
-    margin: 0; /* Add some space between paragraphs */
-    padding: 0px 10px;
-    transform: translateY(2px);
+.meta-icon {
+    font-family: UniEmoji, sans-serif;
+    font-style: normal;
+    font-size: 1.8rem;
 }
 
-.font-title,
-.font-type,
-.font-characters,
-.font-date {
-    flex: 1 0 0;
-    text-align: center;
+/* Font-specific styles */
+#font-pe .font-name {
+    font-family: pe-vf, monospace;
+    font-size: 11rem;
+    margin-bottom: 5px;
+    font-variation-settings: 'DOTW' 0, 'BARW' 100;
+    animation: pe-morph 4s ease-in-out infinite;
 }
 
-@media (max-width: 576px) {
-    .fonts {
-        grid-template-columns: 1fr; /* Switch to 1 column on mobile */
-    }
+#font-kilt .font-name {
+    font-family: kilt-vf, monospace;
+    font-size: 13rem;
+    font-variation-settings: 'wght' 100;
+    margin-bottom: -15px;
+    animation: weight-pulse 3s ease-in-out infinite;
+}
 
-    .font-header{
-        padding-bottom: 10px;
+@keyframes pe-morph {
+    0%, 100% {
+        font-variation-settings: 'DOTW' 0, 'BARW' 100;
     }
-
-    .font-header img{
-        height: 13vw;
+    50% {
+        font-variation-settings: 'DOTW' 100, 'BARW' 0;
     }
+}
 
-    .font-info {
-        flex-direction: column; /* Ensure vertical alignment */
-        align-items: center;
+@keyframes weight-pulse {
+    0%, 100% {
+        font-variation-settings: 'wght' 100;
     }
-
-    .font-info p {
-        padding-top: 5px;
+    50% {
+        font-variation-settings: 'wght' 200;
     }
+}
 
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .font-header {
+        min-height: 200px;
+    }
+    
+    .border-corner-left,
+    .border-corner-right {
+        width: 100px;
+        height: 200px;
+    }
+    
+    .font-header-top-border,
+    .font-header-bottom-border {
+        height: 13.33px;
+    }
+    
+    .font-name {
+        font-size: 3rem;
+    }
+    
+    .font-meta {
+        flex-direction: column;
+        gap: 10px;
+        font-size: 0.85rem;
+    }
 }
 
 
@@ -353,149 +434,7 @@ header {
     display: none;
 }
 
-/* FONTS SECTION */
-.fonts {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    width: 100%;
-}
 
-/* Individual font header */
-.font-header {
-    display: flex;
-    align-items: stretch;
-    width: 100%;
-    min-height: 300px;
-}
-
-/* Corner SVGs - explicit dimensions from source */
-.border-corner-left,
-.border-corner-right {
-    flex-shrink: 0;
-    width: 150.16px; /* Match viewBox width exactly */
-    height: 300px; /* Match viewBox height exactly */
-}
-
-/* Middle content area - stretches horizontally */
-.font-header-content {
-    flex-grow: 1;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Top and bottom black borders */
-.font-header-top-border,
-.font-header-bottom-border {
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 20px;
-    background-color: black;
-}
-
-.font-header-top-border {
-    top: 0;
-}
-
-.font-header-bottom-border {
-    bottom: 0;
-}
-
-/* Font information */
-.font-info {
-    text-align: center;
-    z-index: 1;
-    padding: 0 40px;
-}
-
-.font-name {
-    font-size: 5rem;
-    letter-spacing: 0.1em;
-    margin: 0 0 20px 0;
-    font-weight: bold;
-}
-
-.font-meta {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    font-family: monospace;
-    font-size: 1rem;
-}
-
-/* Font-specific styles */
-#font-bezi .font-name {
-    font-family: bezi-vf, monospace;
-}
-
-#font-kilt .font-name {
-    font-family: kilt-vf, monospace;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-    .font-header {
-        min-height: 200px;
-    }
-    
-    .border-corner-left,
-    .border-corner-right {
-        width: 100px;
-        height: 200px;
-    }
-    
-    .font-header-top-border,
-    .font-header-bottom-border {
-        height: 13.33px;
-    }
-    
-    .font-name {
-        font-size: 3rem;
-    }
-    
-    .font-meta {
-        flex-direction: column;
-        gap: 10px;
-        font-size: 0.85rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .fonts {
-        gap: 20px;
-    }
-    
-    .font-header {
-        min-height: 150px;
-    }
-    
-    .border-corner-left,
-    .border-corner-right {
-        width: 75px;
-        height: 150px;
-    }
-    
-    .font-header-top-border,
-    .font-header-bottom-border {
-        height: 10px;
-    }
-    
-    .font-name {
-        font-size: 2rem;
-    }
-    
-    .font-info {
-        padding: 0 20px;
-    }
-    
-    .font-meta {
-        font-size: 0.7rem;
-        gap: 8px;
-    }
-}
 
 /* Download-button */
 
