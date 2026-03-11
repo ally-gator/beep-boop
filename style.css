@@ -427,12 +427,24 @@ header {
 }
 
 #pe-area {
-    font-size: 100px;
-    line-height: 120px;
+    font-size: 72px;
+    line-height: 86px;
     font-family: pe-vf;
-    font-variation-settings: 
+    font-variation-settings:
         'DOTW' 0,
         'BARW' 0;
+    height: 100px;
+    overflow: hidden;
+}
+
+/* PE Tester Layout */
+#pe-tester {
+    width: 100%;
+    margin: 50px 0;
+}
+
+#pe-tester .control-panel > div {
+    background-color: #ebbdb0;
 }
 
 #d2d-text, #kilt-text, #pe-text{
@@ -459,6 +471,22 @@ header {
     transform: translateX(40px);
     width: 40%;
     height: auto;
+}
+
+/* PE Page Hero */
+#hero-img-mob {
+    display: none;
+}
+
+#hero-img {
+    width: 50%;
+    margin: 0 auto;
+}
+
+#hero-img img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 /*d2d Page Mob*/
