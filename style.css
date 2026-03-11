@@ -88,7 +88,17 @@ header {
     height: auto;
     box-sizing: border-box;
     overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 1.5rem;
 }
+
+/* Main content container for middle columns */
+.bb-content > * {
+    grid-column: 2 / 5; /* Spans columns 2, 3, and 4 (the middle three) */
+}
+
+
 /* Mobile adjustments */
 @media (max-width: 576px) {
     body {
@@ -118,14 +128,13 @@ header {
 }
 
 /* Fonts-Page */
-
-
 /* FONTS SECTION */
 .fonts {
     display: flex;
     flex-direction: column;
     gap: 40px;
     width: 100%;
+    /* Remove grid-column here since parent selector handles it */
 }
 
 /* Individual font header */
