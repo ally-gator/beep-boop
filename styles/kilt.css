@@ -1,0 +1,431 @@
+/* ==========================================================
+   KILT PAGE — kilt.css
+   Page-specific styles for fonts/kilt.html
+   ========================================================== */
+
+/* CSS Variables */
+:root {
+    --kilt-green:     #01924f;
+    --kilt-blue:      #3676b8;
+    --kilt-red:       #d43b2a;
+    --kilt-yellow:    #f3c343;
+    --kilt-bg:        #ebbdb0;
+    --kilt-black:     #000000;
+    --grid-red:       rgba(212, 59, 42, 0.18);
+    --grid-blue:      rgba(54, 118, 184, 0.18);
+    --section-gap:    3rem;
+}
+
+/* ==========================================================
+   PAGE WRAPPER
+   ========================================================== */
+
+#kilt-page {
+    grid-column: 1 / -1;   /* span all 5 columns of .bb-content */
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-gap);
+    width: 100%;
+}
+
+/* ==========================================================
+   SECTION 1 — HERO
+   ========================================================== */
+
+#kilt-hero {
+    width: 100%;
+    padding: 1.5rem;
+}
+
+.kilt-hero-title {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ==========================================================
+   SECTION 2 — ILLUSTRATIONS + ABOUT TEXT
+   ========================================================== */
+
+#kilt-about {
+    width: 100%;
+    padding: 1.5rem;
+    /* no background — grid is embedded in kilt_gloves.svg */
+}
+
+.kilt-about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.kilt-illus-box {
+    overflow: hidden;
+    margin: 0;
+}
+
+.kilt-illus-box img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.kilt-illus-flip {
+    transform: scaleX(-1);
+}
+
+.kilt-about-text {
+    font-family: monospace;
+    font-size: 0.85rem;
+    line-height: 30px;   /* matches gradient period — locks text to rules at any width */
+    background: repeating-linear-gradient(
+        transparent 0,
+        transparent 27px,
+        var(--grid-red) 27px,
+        var(--grid-red) 30px
+    );
+    padding: 0 1rem 1rem;   /* no top padding — anchors line 1 to first rule */
+}
+
+.kilt-about-text .font-name {
+    font-family: 'kilt-vf', monospace;
+    font-size: 1.1rem;
+    font-weight: normal;
+    font-variation-settings: 'wght' 150;
+    display: block;
+    margin-bottom: 0;   /* preserve 30px rhythm */
+}
+
+/* Suppress <br> elements — paragraph spacing handled via margin instead */
+.kilt-about-text br {
+    display: none;
+}
+
+.kilt-about-text p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.kilt-about-text p + p {
+    margin-top: 30px;   /* one blank ruled line between paragraphs, stays grid-aligned */
+}
+
+/* ==========================================================
+   SECTION 3 — TYPE TESTER (DASHED SLIDERS + NOTEPAD)
+   ========================================================== */
+
+#kilt-tester {
+    width: 100%;
+}
+
+/* --- Control Panel --- */
+
+.kilt-control-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.kilt-slider-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.kilt-slider-row h2 {
+    font-family: monospace;
+    font-size: 0.75rem;
+    font-weight: normal;
+    white-space: nowrap;
+    letter-spacing: 0.08em;
+}
+
+/* Dashed slider track */
+.kilt-slider-row input[type='range'] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    border: none;         /* override global .range-slider-bar */
+    border-radius: 0;     /* override global .range-slider-bar */
+    flex: 1;
+    cursor: pointer;
+    height: 20px;   /* touch target */
+}
+
+.kilt-slider-row input[type='range']::-webkit-slider-runnable-track {
+    height: 2px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--kilt-black) 0,
+        var(--kilt-black) 5px,
+        transparent 5px,
+        transparent 10px
+    );
+}
+
+.kilt-slider-row input[type='range']::-moz-range-track {
+    height: 2px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--kilt-black) 0,
+        var(--kilt-black) 5px,
+        transparent 5px,
+        transparent 10px
+    );
+    border: none;
+}
+
+.kilt-slider-row input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--kilt-black);
+    margin-top: -6px;
+    cursor: pointer;
+}
+
+.kilt-slider-row input[type='range']::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--kilt-black);
+    border: none;
+    cursor: pointer;
+}
+
+/* --- Notepad --- */
+
+.notepad-wrapper {
+    position: relative;
+    margin-top: 0.25rem;
+    isolation: isolate;
+}
+
+/* Shadow page — furthest back */
+.notepad-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--kilt-black);
+    background: var(--kilt-bg);
+    transform: translate(7px, 7px);
+    z-index: 0;
+}
+
+/* Shadow page — middle */
+.notepad-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--kilt-black);
+    background: var(--kilt-bg);
+    transform: translate(3.5px, 3.5px);
+    z-index: 1;
+}
+
+.notepad {
+    position: relative;
+    z-index: 2;
+    border: 1px solid var(--kilt-black);   /* all four sides — top border is flush paper edge */
+    background:
+        var(--kilt-bg)
+        repeating-linear-gradient(
+            transparent 0,
+            transparent 27px,
+            var(--grid-red) 27px,
+            var(--grid-red) 30px
+        );
+    padding: 0 1.5rem 2rem 4rem;   /* no top padding — perf sits flush */
+    min-height: 250px;
+}
+
+/* Perforation line — tall narrow dashes like ring-binder holes (~15 on desktop) */
+.notepad-perf {
+    height: 28px;   /* taller than dash width (8px) for ring-binder feel */
+    background: repeating-linear-gradient(
+        90deg,
+        var(--kilt-black) 0,
+        var(--kilt-black) 8px,   /* narrow dash */
+        transparent 8px,
+        transparent 50px
+    );
+    background-position: center;   /* centres the dash pattern */
+    /* border-bottom: 1px solid var(--kilt-black);   separator below binding area */
+    margin-bottom: 1rem;
+    transform: translate(-1px, -15px);
+    margin-left: 0.5rem;   /* bleed to notepad edges */
+    margin-right: 0.5rem;
+}
+
+/* Blue margin line */
+.notepad::before {
+    content: '';
+    position: absolute;
+    left: 3.25rem;
+    top: 0;
+    bottom: 0;
+    border-left: 3px solid var(--grid-blue);   /* matches horizontal ruled-line weight/opacity */
+    z-index: 3;
+}
+
+/* Pencil icon — top right corner */
+.notepad-pencil {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.8rem;
+    width: 22px;
+    height: auto;
+    opacity: 0.55;
+    z-index: 4;
+}
+
+/* Override global .typing-area to suit the notepad layout */
+#kilt-tester .typing-area {
+    text-align: left;
+    overflow: visible;
+    outline: none;
+    color: var(--kilt-black);
+    font-size: 120px;
+    line-height: 150px;
+}
+
+/* ==========================================================
+   SECTION 4 — GLYPH SPECIMEN + TEXT
+   ========================================================== */
+
+#kilt-specimen {
+    padding: 1.5rem 0;
+}
+
+.kilt-specimen-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.kilt-specimen-text {
+    font-family: monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    background: repeating-linear-gradient(
+        transparent 0,
+        transparent 27px,
+        var(--grid-red) 27px,
+        var(--grid-red) 30px
+    );
+    padding: 1rem;
+}
+
+.kilt-specimen-box {
+    background: var(--kilt-bg);
+    border: 1px solid var(--kilt-black);
+    padding: 1.5rem;
+}
+
+.kilt-specimen-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ==========================================================
+   SECTION 5 — LETTER CONSTRUCTION
+   ========================================================== */
+
+#kilt-construction {
+    padding: 0.4rem;
+    /* no background — grid is embedded in kilt_spec.svg */
+}
+
+.kilt-construction-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;   /* was: 1fr 1fr 2fr — now single SVG + text */
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.kilt-construction-box {
+    margin: 0;
+}
+
+.kilt-construction-box img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.kilt-construction-text {
+    font-family: monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    background: repeating-linear-gradient(
+        transparent 0,
+        transparent 27px,
+        var(--grid-red) 27px,
+        var(--grid-red) 30px
+    );
+    padding: 1rem;
+}
+
+/* ==========================================================
+   SECTION 6 — INTERACTIVE ALPHABET GRID
+   ========================================================== */
+
+#kilt-alphabet {
+    width: 100%;
+}
+
+.kilt-alphabet-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;   /* was: 3fr 1fr — equal split */
+    gap: 2.5rem;
+    align-items: stretch;   /* list column stretches to viewer height */
+}
+
+/* The glyph viewer — grid is embedded inside each letter SVG */
+.kilt-glyph-viewer {
+    position: relative;
+    display: block;
+}
+
+.kilt-glyph-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* A–Z list */
+.kilt-az-list {
+    list-style: none;
+    padding: 18px;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;   /* bordered cells tile flush — 1px separation in all directions */
+    align-content: space-between;   /* rows spread to fill viewer height */
+    font-family: 'kilt-vf', monospace;
+    font-variation-settings: 'wght' 100;
+    font-size: 2.5rem;
+    cursor: default;
+    user-select: none;
+}
+
+.kilt-az-list li {
+    /* border: 1px solid rgba(1, 146, 79, 0.5);   green border on each letter cell */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.12s ease;
+    color: var(--kilt-black);
+}
+
+.kilt-az-list li:hover,
+.kilt-az-list li.active {
+    color: var(--kilt-green);
+}
