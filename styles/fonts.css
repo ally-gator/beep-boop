@@ -46,3 +46,12 @@
         'DOTW' 0, /* default value for Dot Sharpness */
         'BARW' 0; /* default value for Bar Sharpness */
   }
+
+    @font-face {
+    font-family: 'toy-box';
+    src: url('../assets/fonts/Toy-Box/ToyBoxVF.woff2') format('woff2'),
+         url('../assets/fonts/Toy-Box/ToyBoxVF.ttf') format('truetype');
+    font-style: normal;
+    font-variation-settings: 
+        'HOLE' 0, /* default value for Dot Sharpness */
+  }

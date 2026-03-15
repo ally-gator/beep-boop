@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Toy Box</title>
+        <link rel="stylesheet" type="text/css" href="../styles/normalize.css">
+        <link rel="stylesheet" type="text/css" href="../styles/fonts.css">
+        <link rel="stylesheet" type="text/css" href="../style.css">
+        <link rel="stylesheet" type="text/css" href="../styles/toybox.css">
+        <link rel="icon" type="image/x-icon" href="../assets/svgs/bb24_fav-icon.svg">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+
+        <!-- ==============================
+             NAVBAR
+        =============================== -->
+        <header>
+            <div class="nav">
+                <ul id="bb-menu">
+                    <li class="nav-item"><a href="../index.html"><img src="../assets/logos/bb_sk8board.svg" height="60"></a></li>
+                    <li class="nav-item"><a href="../index.html"><img src="../assets/svgs/nav-bar/fonts.svg" height="45"></a></li>
+                    <li class="nav-item"><a href="../about.html"><img src="../assets/svgs/nav-bar/about.svg" height="45"></a></li>
+                    <li class="nav-item"><a href="https://www.instagram.com/bb.otf/" target="_blank"><img src="../assets/svgs/nav-bar/insta.svg" height="45"></a></li>
+                </ul>
+            </div>
+        </header>
+
+        <!-- ==============================
+             PAGE CONTENT
+        =============================== -->
+        <div class="bb-content">
+            <div id="tb-page">
+
+                <!-- SECTION 1 — HERO -->
+                <section id="tb-hero">
+                    <img
+                        src="../assets/toybox-page/tb-header.svg"
+                        class="tb-hero-title"
+                        alt="TOY BOX"
+                    >
+                </section>
+
+                <!-- SECTION 2 — ABOUT -->
+                <section id="tb-about">
+                    <div class="tb-about-text">
+                        <p>
+                            Toy Box is a modular typeface built from a small set of interchangeable pieces — rounded rectangles, arches, and circles that slot together to form a full alphabet.
+                        </p>
+                        <p>
+                            The HOLE variable axis controls how hollow or solid the circular cutouts appear, letting you dial between a bold, chunky feel and something more open and airy.
+                        </p>
+                    </div>
+                    <!-- Duck sits on the top edge of the Matter.js box -->
+                    <img
+                        src="../assets/brand-assets/duck.svg"
+                        class="tb-duck"
+                        alt=""
+                        aria-hidden="true"
+                    >
+                </section>
+
+                <!-- SECTION 3 — MATTER.JS PHYSICS BOX -->
+                <section id="tb-matter">
+                    <!-- Canvas is injected here by matter-toybox.js -->
+                </section>
+
+                <!-- SECTION 4 — TYPE TESTER -->
+                <section id="tb-tester">
+                    <div class="tb-notepad-wrapper">
+                        <div class="tb-notepad">
+                            <div class="tb-notepad-perf"></div>
+
+                            <div class="tb-control-panel">
+                                <div class="tb-slider-row">
+                                    <h2>SIZE</h2>
+                                    <input
+                                        class="range-slider-bar"
+                                        type="range"
+                                        id="size-slider"
+                                        min="0"
+                                        max="240"
+                                        value="120"
+                                        oninput="updateSize(this.value)"
+                                    >
+                                </div>
+                                <div class="tb-slider-row">
+                                    <h2>LEADING</h2>
+                                    <input
+                                        class="range-slider-bar"
+                                        type="range"
+                                        id="leading-slider"
+                                        min="0"
+                                        max="300"
+                                        value="150"
+                                        oninput="updateLineHeight(this.value)"
+                                    >
+                                </div>
+                                <div class="tb-slider-row">
+                                    <h2>HOLE</h2>
+                                    <input
+                                        class="range-slider-bar"
+                                        type="range"
+                                        id="hole-slider"
+                                        min="0"
+                                        max="100"
+                                        value="0"
+                                        step="1"
+                                        oninput="updateHole(this.value)"
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="typing-area" id="tb-area" contenteditable="true">
+                                <p class="tb-type" id="tb-text">Fix my box with five dozen quartz jagged Lego</p>
+                                <p class="tb-type" id="tb-text-mob">Fix my box with five dozen quartz</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div><!-- /#tb-page -->
+        </div><!-- /.bb-content -->
+
+        <!-- Hidden SVG paths for Matter.js — outer contours only (no hole subpaths) -->
+        <div id="tb-svgs">
+            <!-- tb-p1: small pill / capsule (viewBox 200×400) -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400">
+                <path id="tb-p1-path" d="M100,0C44.77,0,0,44.77,0,100v200c0,55.23,44.77,100,100,100s100-44.77,100-100V100C200,44.77,155.23,0,100,0Z"/>
+            </svg>
+            <!-- tb-p2: tall pill (viewBox 200×775) -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 775">
+                <path id="tb-p2-path" d="M100,0C44.77,0,0,44.77,0,100v575c0,55.23,44.77,100,100,100s100-44.77,100-100V100C200,44.77,155.23,0,100,0Z"/>
+            </svg>
+            <!-- tb-p3: quarter-circle / curved L (viewBox 500×500) -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+                <path id="tb-p3-path" d="M400,300c-110.28,0-200-89.72-200-200C200,44.77,155.23,0,100,0S0,44.77,0,100s10.59,106.35,31.48,155.73c20.15,47.64,48.98,90.41,85.68,127.11s79.47,65.53,127.11,85.68c49.38,20.89,101.77,31.48,155.73,31.48s100-44.77,100-100-44.77-100-100-100Z"/>
+            </svg>
+            <!-- tb-p4: triple arch (viewBox 600×400) -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+                <path id="tb-p4-path" d="M576.38,183.2c-15.12-35.74-36.73-67.81-64.25-95.33-27.52-27.52-59.59-49.14-95.33-64.25C379.75,7.95,340.46,0,300,0s-79.75,7.95-116.8,23.62c-35.74,15.11-67.81,36.73-95.33,64.25-27.52,27.52-49.14,59.59-64.25,95.33C7.95,220.25,0,259.54,0,300c0,55.23,44.77,100,100,100s100-44.77,100-100,44.86-100,100-100,100,44.86,100,100,44.77,100,100,100,100-44.77,100-100c0-40.46-7.95-79.75-23.62-116.8Z"/>
+            </svg>
+        </div>
+
+        <!-- Matter.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/pathseg@1.2.1/pathseg.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/poly-decomp@0.3.0/build/decomp.min.js"></script>
+        <script src="../scripts/matter-toybox.js"></script>
+
+        <!-- Type tester -->
+        <script src="../scripts/toybox.js"></script>
+
+    </body>
+</html>

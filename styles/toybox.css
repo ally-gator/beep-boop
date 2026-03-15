@@ -1,0 +1,311 @@
+/* ==========================================================
+   TOY BOX PAGE — toybox.css
+   Page-specific styles for fonts/toybox.html
+   ========================================================== */
+
+/* CSS Variables */
+:root {
+    --tb-yellow:      #ffaf38;
+    --tb-black:       #000000;
+    --tb-bg:          #ebbdb0;
+    --grid-yellow:    rgba(255, 175, 56, 0.25);
+    --section-gap:    3rem;
+}
+
+/* ==========================================================
+   PAGE WRAPPER
+   ========================================================== */
+
+#tb-page {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-gap);
+    width: 100%;
+}
+
+/* ==========================================================
+   SECTION 1 — HERO
+   ========================================================== */
+
+#tb-hero {
+    width: 100%;
+    padding: 1.5rem;
+}
+
+.tb-hero-title {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ==========================================================
+   SECTION 2 — ABOUT
+   ========================================================== */
+
+#tb-about {
+    width: 100%;
+    padding: 1.5rem;
+    position: relative;   /* anchor the duck */
+}
+
+.tb-about-text {
+    font-family: monospace;
+    font-size: 0.85rem;
+    line-height: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+    background: repeating-linear-gradient(
+        transparent 0,
+        transparent 27px,
+        var(--grid-yellow) 27px,
+        var(--grid-yellow) 30px
+    );
+    padding: 0 1rem 1rem;
+}
+
+.tb-about-text p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.tb-about-text p + p {
+    margin-top: 30px;
+}
+
+/* Duck sits at bottom of about section, overlapping the Matter.js box top edge */
+.tb-duck {
+    position: absolute;
+    bottom: -28px;
+    left: 6%;
+    width: 60px;
+    height: auto;
+    z-index: 10;
+}
+
+/* ==========================================================
+   SECTION 3 — MATTER.JS PHYSICS BOX
+   ========================================================== */
+
+#tb-matter {
+    width: 100%;
+    height: 500px;
+    border: 3px solid var(--tb-black);
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+}
+
+#tb-matter canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Hidden SVG container — paths are read by Matter.js, not displayed */
+#tb-svgs {
+    display: none;
+}
+
+/* ==========================================================
+   SECTION 4 — TYPE TESTER (DASHED SLIDERS + NOTEPAD)
+   ========================================================== */
+
+#tb-tester {
+    width: 100%;
+}
+
+/* --- Control Panel --- */
+
+.tb-control-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.tb-slider-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.tb-slider-row h2 {
+    font-family: monospace;
+    font-size: 0.75rem;
+    font-weight: normal;
+    white-space: nowrap;
+    letter-spacing: 0.08em;
+}
+
+/* Dashed slider track */
+.tb-slider-row input[type='range'] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    flex: 1;
+    cursor: pointer;
+    height: 20px;
+}
+
+.tb-slider-row input[type='range']::-webkit-slider-runnable-track {
+    height: 2px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--tb-black) 0,
+        var(--tb-black) 5px,
+        transparent 5px,
+        transparent 10px
+    );
+}
+
+.tb-slider-row input[type='range']::-moz-range-track {
+    height: 2px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--tb-black) 0,
+        var(--tb-black) 5px,
+        transparent 5px,
+        transparent 10px
+    );
+    border: none;
+}
+
+.tb-slider-row input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--tb-black);
+    margin-top: -6px;
+    cursor: pointer;
+}
+
+.tb-slider-row input[type='range']::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--tb-black);
+    border: none;
+    cursor: pointer;
+}
+
+/* --- Notepad --- */
+
+.tb-notepad-wrapper {
+    position: relative;
+    margin-top: 0.25rem;
+    isolation: isolate;
+}
+
+/* Shadow page */
+.tb-notepad-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 3px solid var(--tb-black);
+    background: rgba(255, 175, 56, 0.12);
+    transform: translate(12px, 12px);
+    z-index: 0;
+}
+
+.tb-notepad {
+    position: relative;
+    z-index: 2;
+    border: 3px solid var(--tb-black);
+    background:
+        var(--tb-bg)
+        repeating-linear-gradient(
+            transparent 0,
+            transparent 27px,
+            var(--grid-yellow) 27px,
+            var(--grid-yellow) 30px
+        );
+    padding: 0 1.5rem 2rem 4rem;
+    min-height: 250px;
+}
+
+/* Perforation line */
+.tb-notepad-perf {
+    height: 24px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--tb-black) 0,
+        var(--tb-black) 8px,
+        transparent 8px,
+        transparent 63px
+    );
+    background-position: center;
+    margin-bottom: 1rem;
+    transform: translate(-1px, -15px);
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+/* Yellow margin line */
+.tb-notepad::before {
+    content: '';
+    position: absolute;
+    left: 3rem;
+    top: 0;
+    bottom: 0;
+    border-left: 3px solid var(--tb-yellow);
+    z-index: 3;
+}
+
+/* Typing area */
+#tb-area {
+    font-family: 'toy-box', sans-serif;
+    font-variation-settings: 'HOLE' 0;
+}
+
+#tb-text     { display: block; }
+#tb-text-mob { display: none; }
+
+#tb-tester .typing-area {
+    text-align: left;
+    overflow: visible;
+    outline: none;
+    color: var(--tb-black);
+    font-size: 120px;
+    line-height: 150px;
+}
+
+/* ==========================================================
+   MOBILE STYLES — max-width: 576px
+   ========================================================== */
+
+@media (max-width: 576px) {
+
+    #tb-about { margin-top: -4rem; }
+
+    .tb-about-text {
+        font-size: 10px;
+        line-height: 30px;
+        max-width: 100%;
+    }
+
+    .tb-duck {
+        width: 44px;
+        bottom: -22px;
+    }
+
+    #tb-matter {
+        height: 320px;
+    }
+
+    .tb-control-panel           { grid-template-columns: 1fr; }
+    .tb-slider-row:nth-child(2) { display: none; }   /* hide LEADING on mobile */
+
+    #tb-tester .typing-area {
+        line-height: 1.2;
+    }
+
+    #tb-text     { display: none; }
+    #tb-text-mob { display: block; }
+
+}

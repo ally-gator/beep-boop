@@ -219,7 +219,8 @@ header {
 }
 
 .font-header-link:hover #font-pe .font-name,
-.font-header-link:hover #font-kilt .font-name {
+.font-header-link:hover #font-kilt .font-name,
+.font-header-link:hover #font-toybox .font-name {
     animation-play-state: running;
 }
 
@@ -302,6 +303,19 @@ header {
     }
 }
 
+#font-toybox .font-name {
+    font-family: toy-box, monospace;
+    font-size: 11rem;
+    font-variation-settings: 'HOLE' 0;
+    animation: hole-pulse 3s ease-in-out infinite;
+    animation-play-state: paused;
+}
+
+@keyframes hole-pulse {
+    0%, 100% { font-variation-settings: 'HOLE' 0; }
+    50%       { font-variation-settings: 'HOLE' 1; }
+}
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
     .font-header {
@@ -366,6 +380,11 @@ header {
 
     #font-kilt .font-name {
         font-size: 16vw;
+        margin-bottom: 0;
+    }
+
+    #font-toybox .font-name {
+        font-size: 15vw;
         margin-bottom: 0;
     }
 
