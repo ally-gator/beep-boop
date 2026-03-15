@@ -52,15 +52,17 @@ document.addEventListener('DOMContentLoaded', function () {
     // Adjust slider ranges for mobile screens
     const updateSliderValuesForMobile = () => {
         if (window.innerWidth <= 576) {
-            document.getElementById('size-slider').max    = '120';
-            document.getElementById('size-slider').value  = '60';
+            document.getElementById('size-slider').max    = '72';
+            document.getElementById('size-slider').value  = '42';
             document.getElementById('leading-slider').max   = '150';
             document.getElementById('leading-slider').value = '75';
+            updateSize(42);   // apply font size — slider value alone doesn't update the text
         } else {
             document.getElementById('size-slider').max    = '240';
             document.getElementById('size-slider').value  = '120';
             document.getElementById('leading-slider').max   = '300';
             document.getElementById('leading-slider').value = '150';
+            updateSize(120);
         }
     };
 

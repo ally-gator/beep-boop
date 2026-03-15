@@ -284,6 +284,16 @@
     z-index: 4;
 }
 
+/* Typing area font — moved from style.css */
+#kilt-area {
+    font-family: kilt-vf;
+    font-variation-settings: 'wght' 150;
+}
+
+/* Desktop/mobile text swap — moved from style.css */
+#kilt-text     { display: block; }
+#kilt-text-mob { display: none; }
+
 /* Override global .typing-area to suit the notepad layout */
 #kilt-tester .typing-area {
     text-align: left;
@@ -310,6 +320,7 @@
 }
 
 .kilt-specimen-text {
+    order: 1;   /* left column on desktop — restores position after HTML reorder */
     font-family: monospace;
     font-size: 0.85rem;
     line-height: 1.6;
@@ -323,9 +334,21 @@
 }
 
 .kilt-specimen-box {
+    order: 2;   /* right column on desktop — restores position after HTML reorder */
     background: var(--kilt-bg);
     border: 1px solid var(--kilt-black);
     padding: 1.5rem;
+}
+
+/* Stitch diagram — mobile only */
+.kilt-stich-box {
+    display: none;
+}
+
+.kilt-stich-img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .kilt-specimen-img {
@@ -428,4 +451,64 @@
 .kilt-az-list li:hover,
 .kilt-az-list li.active {
     color: var(--kilt-green);
+}
+
+/* ==========================================================
+   MOBILE STYLES — max-width: 576px
+   ========================================================== */
+
+@media (max-width: 576px) {
+
+    /* --- SECTION 1→2: Tighten hero-to-about gap --- */
+    #kilt-about { margin-top: -4rem; }
+
+    .kilt-about-text {
+        font-size: 10px;
+        line-height: 30px;   /* explicit px — must match gradient period exactly */
+        background: repeating-linear-gradient(
+            transparent 0,
+            transparent 18px,
+            var(--grid-red) 0px,
+            var(--grid-red) 30px
+        );
+        padding: 0 1rem 1rem;
+    }
+
+    /* --- SECTION 2: Hide gloves, single column --- */
+    .kilt-illus-box  { display: none; }
+    .kilt-about-grid { grid-template-columns: 1fr; }
+
+    /* --- SECTION 3: Stacked sliders (1 column), hide LEADING,
+       tighten line-height to suit 36px font size.
+       HTML order: SIZE (1st), LEADING (2nd), STITCH (3rd) */
+    .kilt-control-panel           { grid-template-columns: 1fr; }
+    .kilt-slider-row:nth-child(2) { display: none; }
+
+    #kilt-tester .typing-area {
+        line-height: 1.2;
+    }
+
+    /* --- SECTION 4: Single column, correct order, show stich-box --- */
+    .kilt-specimen-layout { grid-template-columns: 1fr; }
+    .kilt-specimen-box    { order: unset; }
+    .kilt-specimen-text   { order: unset; }
+    .kilt-stich-box       { display: block; }
+
+    /* --- SECTION 5: Hide letter construction --- */
+    #kilt-construction { display: none; }
+
+    /* Text swap — moved from style.css mobile block */
+    #kilt-text     { display: none; }
+    #kilt-text-mob { display: block; }
+
+    /* --- SECTION 6: Stack layout, A-Z on top, viewer below --- */
+    .kilt-alphabet-layout { grid-template-columns: 1fr; }
+    .kilt-glyph-viewer    { order: 2; }
+    .kilt-az-list {
+        order: 1;
+        grid-template-columns: repeat(9, 1fr);   /* 3 rows: 9 + 9 + 8 */
+        font-size: 1.8rem;
+        padding: 8px;
+    }
+
 }
