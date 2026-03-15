@@ -57,7 +57,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
-    align-items: center;
+    align-items: start;
 }
 
 .kilt-illus-box {
@@ -211,14 +211,14 @@
     content: '';
     position: absolute;
     inset: 0;
-    border: 1px solid var(--kilt-black);
-    background: var(--kilt-bg);
-    transform: translate(7px, 7px);
+    border: 3px solid var(--kilt-black);
+    background: rgb(from var(--kilt-red) r g b / 18%);
+    transform: translate(12px, 12px);
     z-index: 0;
 }
 
 /* Shadow page — middle */
-.notepad-wrapper::after {
+/* .notepad-wrapper::after {
     content: '';
     position: absolute;
     inset: 0;
@@ -226,12 +226,12 @@
     background: var(--kilt-bg);
     transform: translate(3.5px, 3.5px);
     z-index: 1;
-}
+} */
 
 .notepad {
     position: relative;
     z-index: 2;
-    border: 1px solid var(--kilt-black);   /* all four sides — top border is flush paper edge */
+    border: 3px solid var(--kilt-black);   /* all four sides — top border is flush paper edge */
     background:
         var(--kilt-bg)
         repeating-linear-gradient(
@@ -246,13 +246,13 @@
 
 /* Perforation line — tall narrow dashes like ring-binder holes (~15 on desktop) */
 .notepad-perf {
-    height: 28px;   /* taller than dash width (8px) for ring-binder feel */
+    height: 24px;   /* taller than dash width (8px) for ring-binder feel */
     background: repeating-linear-gradient(
         90deg,
         var(--kilt-black) 0,
         var(--kilt-black) 8px,   /* narrow dash */
         transparent 8px,
-        transparent 50px
+        transparent 63px
     );
     background-position: center;   /* centres the dash pattern */
     /* border-bottom: 1px solid var(--kilt-black);   separator below binding area */
@@ -266,7 +266,7 @@
 .notepad::before {
     content: '';
     position: absolute;
-    left: 3.25rem;
+    left: 3rem;
     top: 0;
     bottom: 0;
     border-left: 3px solid var(--grid-blue);   /* matches horizontal ruled-line weight/opacity */
