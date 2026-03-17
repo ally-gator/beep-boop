@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TB Physics</title>
+<style>
+* { margin:0;padding:0;box-sizing:border-box; }
+body { background:#f5f4f0;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;font-family:sans-serif; }
+#c { display:block;border-radius:12px;border:1px solid #ddd;cursor:grab; }
+#c:active { cursor:grabbing; }
+p { margin-top:8px;font-size:12px;color:#999; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<p>drag pieces · double-click to reset</p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+<script>
+const DPR = window.devicePixelRatio || 1;
+const c   = document.getElementById('c');
+const ctx = c.getContext('2d');
+
+// ── Dimensions — recomputed on every resize ───────────────────────────────────
+let W, H, SC;
+
+function updateDimensions() {
+  W  = window.innerWidth  - 40;
+  H  = Math.min(window.innerHeight - 80, 620);
+  SC = (H * 0.40) / 975;   // 0.40 = ~10% smaller than previous 0.45
+  c.width        = W * DPR;
+  c.height       = H * DPR;
+  c.style.width  = W + 'px';
+  c.style.height = H + 'px';
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+}
+
+// ── SVG visuals ───────────────────────────────────────────────────────────────
+const SVG = {
+  p1:{ outer:'M100,0C44.77,0,0,44.77,0,100v200c0,55.23,44.77,100,100,100s100-44.77,100-100V100C200,44.77,155.23,0,100,0Z', holes:[{cx:100,cy:100,r:36},{cx:100,cy:300,r:36}] },
+  p2:{ outer:'M100,0C44.77,0,0,44.77,0,100v575c0,55.23,44.77,100,100,100s100-44.77,100-100V100C200,44.77,155.23,0,100,0Z', holes:[{cx:100,cy:100,r:36},{cx:100,cy:387.5,r:36},{cx:100,cy:675,r:36}] },
+  p3:{ outer:'M400,300c-110.28,0-200-89.72-200-200C200,44.77,155.23,0,100,0S0,44.77,0,100s10.59,106.35,31.48,155.73c20.15,47.64,48.98,90.41,85.68,127.11s79.47,65.53,127.11,85.68c49.38,20.89,101.77,31.48,155.73,31.48s100-44.77,100-100-44.77-100-100-100Z', holes:[{cx:100,cy:100,r:36},{cx:400,cy:400,r:36}] },
+  p4:{ outer:'M576.38,183.2c-15.12-35.74-36.73-67.81-64.25-95.33-27.52-27.52-59.59-49.14-95.33-64.25C379.75,7.95,340.46,0,300,0s-79.75,7.95-116.8,23.62c-35.74,15.11-67.81,36.73-95.33,64.25-27.52,27.52-49.14,59.59-64.25,95.33C7.95,220.25,0,259.54,0,300c0,55.23,44.77,100,100,100s100-44.77,100-100,44.86-100,100-100,100,44.86,100,100,44.77,100,100,100,100-44.77,100-100c0-40.46-7.95-79.75-23.62-116.8Z', holes:[{cx:100,cy:300,r:36},{cx:300,cy:100,r:36},{cx:500,cy:300,r:36}] }
+};
+
+// ── Physics ───────────────────────────────────────────────────────────────────
+const OPTS = { restitution:0.35, friction:0.6, frictionAir:0.03, density:0.003 };
+
+const { Engine, Runner, Bodies, Body, World, Mouse, MouseConstraint, Events, Sleeping } = Matter;
+const engine = Engine.create({ gravity:{ y:1.2 }, enableSleeping:true });
+const world  = engine.world;
+let bodies = [], runner, mc;
+
+function spineBody(points, r) {
+  const filled = [];
+  for (let i = 0; i < points.length - 1; i++) {
+    const a = points[i], b = points[i+1];
+    const dx = b.x-a.x, dy = b.y-a.y;
+    const dist = Math.sqrt(dx*dx+dy*dy);
+    const steps = Math.ceil(dist / (r * 1.2));
+    for (let s = 0; s <= steps; s++) {
+      const t = s / steps;
+      filled.push({ x: a.x + dx*t, y: a.y + dy*t });
+    }
+  }
+  const unique = [filled[0]];
+  for (let i = 1; i < filled.length; i++) {
+    const prev = unique[unique.length-1];
+    const dx = filled[i].x - prev.x, dy = filled[i].y - prev.y;
+    if (Math.sqrt(dx*dx+dy*dy) > r * 0.5) unique.push(filled[i]);
+  }
+  const parts = unique.map(p => Bodies.circle(p.x*SC, p.y*SC, r*SC, OPTS));
+  return Body.create({ parts, ...OPTS });
+}
+
+const PIECE_DEFS = [
+  { svgId:'p1', spine:[{x:100,y:0},{x:100,y:400}], r:100 },
+  { svgId:'p2', spine:[{x:100,y:0},{x:100,y:775}], r:100 },
+  { svgId:'p3', spine:[{x:100,y:100},{x:175,y:140},{x:230,y:200},{x:270,y:270},{x:300,y:350},{x:400,y:400}], r:100 },
+  { svgId:'p4', spine:[{x:100,y:300},{x:150,y:220},{x:220,y:160},{x:300,y:100},{x:380,y:160},{x:450,y:220},{x:500,y:300}], r:100 }
+];
+
+function makeBody(def, dropX, dropY) {
+  const body = spineBody(def.spine, def.r);
+  body._svgOffsetX = -body.position.x;
+  body._svgOffsetY = -body.position.y;
+  Body.setPosition(body, { x: dropX, y: dropY });
+  Body.setAngle(body, (Math.random()-0.5)*0.3);
+  body._def = def;
+  return body;
+}
+
+// ── Rendering ─────────────────────────────────────────────────────────────────
+function drawPiece(body) {
+  const def = body._def;
+  const svg = SVG[def.svgId];
+  ctx.save();
+  ctx.translate(body.position.x, body.position.y);
+  ctx.rotate(body.angle);
+  ctx.translate(body._svgOffsetX, body._svgOffsetY);
+  ctx.scale(SC, SC);
+  ctx.fillStyle = '#1a1a1a';
+  const path = new Path2D();
+  path.addPath(new Path2D(svg.outer));
+  svg.holes.forEach(h => { const hole = new Path2D(); hole.arc(h.cx, h.cy, h.r, 0, Math.PI*2); hole.closePath(); path.addPath(hole); });
+  ctx.fill(path, 'evenodd');
+  ctx.restore();
+}
+
+function loop() {
+  ctx.clearRect(0, 0, W, H);
+  bodies.forEach(drawPiece);
+  requestAnimationFrame(loop);
+}
+
+function wakeAll() {
+  bodies.forEach(b => Sleeping.set(b, false));
+}
+
+// ── World setup ───────────────────────────────────────────────────────────────
+function buildWalls() {
+  const s = { isStatic:true, restitution:0.3, friction:0.8 };
+  World.add(world, [
+    Bodies.rectangle(W/2, H+30, W+200, 60, s),
+    Bodies.rectangle(-30, H/2, 60, H+200, s),
+    Bodies.rectangle(W+30, H/2, 60, H+200, s),
+  ]);
+}
+
+function spawnPieces() {
+  bodies.forEach(b => World.remove(world, b));
+  bodies = [];
+  [0,2,3,1].forEach((pi, i) => {
+    const def = PIECE_DEFS[pi];
+    const x = (W / 5) * (i + 1);
+    const y = -80 - i * 160;
+    const b = makeBody(def, x, y);
+    bodies.push(b);
+    World.add(world, b);
+  });
+}
+
+function init() {
+  World.clear(world);
+  Engine.clear(engine);
+  engine.gravity.y = 1.2;
+  buildWalls();
+  spawnPieces();
+
+  const mouse = Mouse.create(c);
+  mouse.pixelRatio = DPR;
+  mc = MouseConstraint.create(engine, {
+    mouse,
+    constraint:{ stiffness:0.25, angularStiffness:0.1, render:{visible:false} }
+  });
+  World.add(world, mc);
+  Events.on(mc, 'startdrag', wakeAll);
+
+  if (runner) Runner.stop(runner);
+  runner = Runner.create();
+  Runner.run(runner, engine);
+}
+
+// ── Resize handler ────────────────────────────────────────────────────────────
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    updateDimensions();
+    init();
+  }, 150); // debounce — wait for resize to finish before rebuilding
+});
+
+c.addEventListener('dblclick', init);
+updateDimensions();
+loop();
+init();
+</script>
+</body>
+</html>

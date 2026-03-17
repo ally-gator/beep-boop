@@ -5,6 +5,9 @@
 
 /* CSS Variables */
 :root {
+    --kilt-green:     #01924f;
+    --kilt-blue:      #3676b8;
+    --kilt-red:       #d43b2a;
     --tb-yellow:      #ffaf38;
     --tb-black:       #000000;
     --tb-bg:          #ebbdb0;
@@ -51,14 +54,14 @@
 
 .tb-about-text {
     font-family: monospace;
-    font-size: 0.85rem;
-    line-height: 30px;
+    font-size: 10px;
+    line-height: 30px;   /* explicit px — must match gradient period exactly */
     max-width: 600px;
     margin: 0 auto;
     background: repeating-linear-gradient(
         transparent 0,
-        transparent 27px,
-        var(--grid-yellow) 27px,
+        transparent 18px,
+        var(--grid-yellow) 0px,
         var(--grid-yellow) 30px
     );
     padding: 0 1rem 1rem;
@@ -76,7 +79,7 @@
 /* Duck sits at bottom of about section, overlapping the Matter.js box top edge */
 .tb-duck {
     position: absolute;
-    bottom: -28px;
+    bottom: -52px;
     left: 6%;
     width: 60px;
     height: auto;
@@ -100,6 +103,21 @@
     display: block;
     width: 100% !important;
     height: 100% !important;
+}
+
+/* Hint label — top-left corner of the physics box */
+.tb-matter-hint {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    margin: 0;
+    font-family: monospace;
+    font-size: 10px;
+    color: var(--tb-black);
+    opacity: 0.45;
+    pointer-events: none;
+    z-index: 5;
+    user-select: none;
 }
 
 /* Hidden SVG container — paths are read by Matter.js, not displayed */
@@ -253,7 +271,7 @@
     left: 3rem;
     top: 0;
     bottom: 0;
-    border-left: 3px solid var(--tb-yellow);
+    border-left: 3px solid color-mix(in srgb, var(--kilt-blue) 18%, transparent);
     z-index: 3;
 }
 
@@ -273,6 +291,152 @@
     color: var(--tb-black);
     font-size: 120px;
     line-height: 150px;
+}
+
+/* ==========================================================
+   SECTION 5 — GLYPH SPECIMEN
+   ========================================================== */
+
+#tb-specimen {
+    padding: 1.5rem 0;
+}
+
+.tb-specimen-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.tb-specimen-text {
+    font-family: monospace;
+    font-size: 10px;
+    line-height: 30px;
+    background: repeating-linear-gradient(
+        transparent 0,
+        transparent 3px,
+        var(--grid-yellow) 0px,
+        var(--grid-yellow) 30px
+    );
+    padding: 1rem;
+}
+
+.tb-specimen-text p {
+    margin: 0 0 1rem;
+    padding-bottom: 0.4rem;
+    min-height: 1.6em;
+}
+
+.tb-specimen-box {
+    background: var(--tb-bg);
+    padding: 1.5rem;
+}
+
+.tb-specimen-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ==========================================================
+   SECTION 6 — LETTER CONSTRUCTION
+   ========================================================== */
+
+#tb-construction {
+    padding: 0.4rem;
+}
+
+.tb-construction-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.tb-construction-box {
+    margin: 0;
+}
+
+.tb-construction-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.tb-construction-text {
+    font-family: monospace;
+    font-size: 10px;
+    line-height: 30px;
+    background: repeating-linear-gradient(
+        transparent 0,
+        transparent 3px,
+        var(--grid-yellow) 0px,
+        var(--grid-yellow) 30px
+    );
+    padding: 1rem;
+}
+
+.tb-construction-text p {
+    margin: 0 0 1rem;
+    padding-bottom: 0.4rem;
+    min-height: 1.6em;
+}
+
+/* ==========================================================
+   SECTION 7 — INTERACTIVE ALPHABET GRID
+   ========================================================== */
+
+#tb-alphabet {
+    width: 100%;
+    padding: 1.5rem 0;
+}
+
+.tb-alphabet-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: stretch;
+}
+
+.tb-glyph-viewer {
+    display: block;
+}
+
+.tb-glyph-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* A–Z list — Toy Box font, HOLE=60, stroke-only default */
+.tb-az-list {
+    list-style: none;
+    padding: 18px;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    align-content: space-between;
+    font-family: 'toy-box', sans-serif;
+    font-variation-settings: 'HOLE' 60;
+    font-size: 2.5rem;
+    cursor: default;
+    user-select: none;
+}
+
+.tb-az-list li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--tb-black);
+    transition: color 0.12s ease;
+    cursor: pointer;
+}
+
+.tb-az-list li:hover,
+.tb-az-list li.active {
+    color: var(--tb-black);
 }
 
 /* ==========================================================
@@ -307,5 +471,21 @@
 
     #tb-text     { display: none; }
     #tb-text-mob { display: block; }
+
+    /* --- SECTION 5: Single column specimen --- */
+    .tb-specimen-layout { grid-template-columns: 1fr; }
+
+    /* --- SECTION 6: Hide construction on mobile --- */
+    #tb-construction { display: none; }
+
+    /* --- SECTION 7: Stack layout, A–Z on top, viewer below --- */
+    .tb-alphabet-layout { grid-template-columns: 1fr; }
+    .tb-glyph-viewer    { order: 2; }
+    .tb-az-list {
+        order: 1;
+        grid-template-columns: repeat(9, 1fr);   /* 3 rows: 9 + 9 + 8 */
+        font-size: 1.8rem;
+        padding: 8px;
+    }
 
 }

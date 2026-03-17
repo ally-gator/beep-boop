@@ -66,4 +66,21 @@ document.addEventListener('DOMContentLoaded', function () {
     updateSliderValuesForMobile();
     window.addEventListener('resize', updateSliderValuesForMobile);
 
+    // ----------------------------------------------------------
+    // SECTION 7 — Interactive Alphabet Glyph Viewer
+    // ----------------------------------------------------------
+
+    const tbGlyphImg   = document.getElementById('tb-glyph-img');
+    const tbLetterItems = document.querySelectorAll('.tb-az-list li');
+
+    tbLetterItems.forEach(function (item) {
+        item.addEventListener('mouseenter', function () {
+            var letter = item.dataset.letter;
+            tbGlyphImg.src = '../assets/toybox-page/letter-svgs/tbglyphs-' + letter + '.svg';
+            tbGlyphImg.alt = 'Glyph ' + letter;
+            tbLetterItems.forEach(function (i) { i.classList.remove('active'); });
+            item.classList.add('active');
+        });
+    });
+
 });

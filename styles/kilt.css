@@ -77,12 +77,12 @@
 
 .kilt-about-text {
     font-family: monospace;
-    font-size: 0.85rem;
-    line-height: 30px;   /* matches gradient period — locks text to rules at any width */
+    font-size: 10px;
+    line-height: 30px;   /* explicit px — must match gradient period exactly */
     background: repeating-linear-gradient(
         transparent 0,
-        transparent 27px,
-        var(--grid-red) 27px,
+        transparent 18px,
+        var(--grid-red) 0px,
         var(--grid-red) 30px
     );
     padding: 0 1rem 1rem;   /* no top padding — anchors line 1 to first rule */
