@@ -312,8 +312,9 @@ header {
 }
 
 @keyframes hole-pulse {
-    0%, 100% { font-variation-settings: 'HOLE' 0; }
-    50%       { font-variation-settings: 'HOLE' 1; }
+    0%   { font-variation-settings: 'HOLE' 0; }
+    50%  { font-variation-settings: 'HOLE' 100; }
+    100% { font-variation-settings: 'HOLE' 0; }
 }
 
 /* Mobile responsiveness */
