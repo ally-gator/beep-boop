@@ -5,82 +5,163 @@
         <link rel="stylesheet" type="text/css" href="../styles/normalize.css">
         <link rel="stylesheet" type="text/css" href="../styles/fonts.css">
         <link rel="stylesheet" type="text/css" href="../style.css">
+        <link rel="stylesheet" type="text/css" href="../styles/pe.css">
         <link rel="icon" type="image/x-icon" href="../assets/svgs/bb24_fav-icon.svg">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
+
+        <!-- ==============================
+             NAVBAR
+        =============================== -->
         <header>
             <div class="nav">
                 <ul id="bb-menu">
                     <li class="nav-item"><a href="../index.html"><img src="../assets/logos/bb_sk8board.svg" height="60"></a></li>
                     <li class="nav-item"><a href="../index.html"><img src="../assets/svgs/nav-bar/fonts.svg" height="45"></a></li>
                     <li class="nav-item"><a href="../about.html"><img src="../assets/svgs/nav-bar/about.svg" height="45"></a></li>
-                    <!-- <li class="nav-item"><a href="journal/journal.html"><img src="assets/svgs/nav-bar/logs.svg" height="45"></a></li> -->
                     <li class="nav-item"><a href="https://www.instagram.com/bb.otf/" target="_blank"><img src="../assets/svgs/nav-bar/insta.svg" height="45"></a></li>
-                    <!-- <li class="nav-item" id="nav-contact"><a href="mailto: abc@bb-fonts.com">Contact</a></li> -->
                 </ul>
             </div>
-        </header>  
+        </header>
 
+        <!-- ==============================
+             PAGE CONTENT
+        =============================== -->
         <div class="bb-content">
+            <div id="pe-page">
 
-            <div id="hero-img">
-                <img src="../assets/pe-page/BB24_PE01_Hero.png" alt="hero-image" id="hero-1">
-            </div>
+                <!-- SECTION 1 — HERO -->
+                <section id="pe-hero">
+                    <img
+                        src="../assets/pe-page/svgs/pe-head.svg"
+                        class="pe-hero-title"
+                        alt="POCKET ELECTRONIC"
+                    >
+                </section>
 
-            <div id="hero-img-mob">
-                <img src="../assets/pe-page/BB24_PE01_Hero-mob.png" alt="hero-image" id="hero-1">
-            </div>
-
-            <div class="bb-tester" id="pe-tester">
-                <div class="control-panel">
-                    <div class="range-slider" id="size">
-                        <h2>SIZE:</h2>
-                        <input class="range-slider-bar" type="range" id="size-slider" min="0" max="120" value="60" oninput="updateSize(this.value)">
-                        <!-- <h2 id="size-value" class="range-value">72px</h2> -->
+                <!-- SECTION 2 — SCROLL ANIMATION + ABOUT TEXT -->
+                <section id="pe-about">
+                    <div class="pe-about-grid">
+                        <div class="pe-anim-col">
+                            <img
+                                src="../assets/pe-page/webp-spec/H_3D_Render.00000.webp"
+                                id="pe-anim-img"
+                                class="pe-anim-img"
+                                alt="3D render of the letter H in Pocket Electronic"
+                            >
+                        </div>
+                        <div class="pe-about-text">
+                            <p>
+                                <span class="font-name">Pocket Electronic: A font that fits in your pencil case!</span>
+                            </p>
+                            <p>
+                                Pocket Electronic is a variable font inspired by the classic LED displays our calculator-loving selves knew and loved. Sharp numerals, round dots — it merges the precision of early digital type with the warmth of dot-matrix grids.
+                            </p>
+                            <p>
+                                Two axes let you push it from crisp and technical to soft and rounded. Whether you're building something that needs a retro-tech edge or just needs a bit of personality, Pocket Electronic fits right in your pencil case.
+                            </p>
+                        </div>
                     </div>
-                    <div class="range-slider" class="leading">
-                        <h2>LEADING:</h2>
-                        <input class="range-slider-bar" type="range" id="leading-slider" min="0" max="200" value="100" oninput="updateLineHeight(this.value)">
-                    </div>
-                    <div class="range-slider" class="dot-slider">
-                        <img src="../assets/pe-page/svgs/pe-dot.svg" alt="DOT" class="pe-svg">
-                        <input class="range-slider-bar" type="range" id="dot-slider" min="0" max="100" value="0" oninput="updateDotSharpness(this.value)">
-                        <img src="../assets/pe-page/svgs/pe-sqr.svg" alt="SQR" class="pe-svg">
-                    </div>
-                    <div class="range-slider" class="kerning">
-                        <img src="../assets/pe-page/svgs/pe-rd-bar.svg" alt="RND-BAR" class="pe-svg">
-                        <input class="range-slider-bar" type="range" id="bar-slider" min="0" max="100" value="0" step="1" oninput="updateBarSharpness(this.value)">
-                        <img src="../assets/pe-page/svgs/pe-bar.svg" alt="BAR" class="pe-svg">
-                    </div>
-                </div>
-                <div class="typing-area" id="pe-area" contenteditable="true">
-                    <p class="pe-type" id="pe-text">A vintage computer quietly buzzed, solving complex math with jittery, frozen graphics</p>
-                    <p class="pe-type" id="pe-text-mob">A vintage computer queitly  buzzes</p>
-                </div>
-            </div>
+                </section>
 
-            <div class="bb-description">
-                <div class="font-abt">
-                    <p class="font-details">
-                    <span class="font-name">Pocket Electronic: A font that fits in your pencil case!</span>
-                    <br><br>
-                    It's a variable font that draws inspiration from the classic, sharpe LED displays our mathmalete selves knew and loved. It merges the precision of sharp-edged numerals with the softness of a rounded dot-matrix aesthetic, offering flexibility for any design. 
-                    <br><br>
-                    Whether you're aiming for a retro-tech feel or a clean digital vibe, Pocket Electronic adapts seamlessly, giving you control over its edges and mood. 
-                    <br><br>
-                    For projects that need a touch of nostalgia with a modern twist. 🧮
-                    </p>
-                </div>
+                <!-- SECTION 3 — TYPE TESTER -->
+                <section id="pe-tester">
+                    <div class="pe-notepad-wrapper">
+                        <div class="pe-notepad">
+                            <div class="pe-notepad-perf"></div>
 
-                <div class="download-area">
-                    <canvas id="bloopy-dwn-btn" width="630" height="400"></canvas>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Script: Rives -->
-        <script src="https://cdn.jsdelivr.net/npm/@rive-app/canvas@latest/rive.js"></script>
+                            <div class="pe-control-panel">
+                                <!-- Row 1: SIZE + LEADING -->
+                                <div class="pe-slider-row">
+                                    <h2>SIZE</h2>
+                                    <input
+                                        class="range-slider-bar"
+                                        type="range"
+                                        id="size-slider"
+                                        min="0"
+                                        max="200"
+                                        value="100"
+                                        oninput="updateSize(this.value)"
+                                    >
+                                </div>
+                                <div class="pe-slider-row">
+                                    <h2>LEADING</h2>
+                                    <input
+                                        class="range-slider-bar"
+                                        type="range"
+                                        id="leading-slider"
+                                        min="0"
+                                        max="240"
+                                        value="120"
+                                        oninput="updateLineHeight(this.value)"
+                                    >
+                                </div>
+                                <!-- Row 2: DOT + BAR with SVG icons -->
+                                <div class="pe-slider-row pe-slider-icon-row">
+                                    <img src="../assets/pe-page/svgs/pe-dot.svg" alt="DOT" class="pe-svg">
+                                    <input
+                                        class="range-slider-bar"
+                                        type="range"
+                                        id="dot-slider"
+                                        min="0"
+                                        max="100"
+                                        value="0"
+                                        oninput="updateDotSharpness(this.value)"
+                                    >
+                                    <img src="../assets/pe-page/svgs/pe-sqr.svg" alt="SQR" class="pe-svg">
+                                </div>
+                                <div class="pe-slider-row pe-slider-icon-row">
+                                    <img src="../assets/pe-page/svgs/pe-rd-bar.svg" alt="RND-BAR" class="pe-svg">
+                                    <input
+                                        class="range-slider-bar"
+                                        type="range"
+                                        id="bar-slider"
+                                        min="0"
+                                        max="100"
+                                        value="0"
+                                        step="1"
+                                        oninput="updateBarSharpness(this.value)"
+                                    >
+                                    <img src="../assets/pe-page/svgs/pe-bar.svg" alt="BAR" class="pe-svg">
+                                </div>
+                            </div>
+
+                            <div class="typing-area" id="pe-area" contenteditable="true">
+                                <p class="pe-type" id="pe-text">A vintage computer quietly buzzed, solving complex math with jittery, frozen graphics</p>
+                                <p class="pe-type" id="pe-text-mob">A vintage computer quietly buzzes</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 4 — CHART + VARIABILITY TEXT -->
+                <section id="pe-variable">
+                    <div class="pe-variable-layout">
+                        <div class="pe-chart-box">
+                            <img
+                                src="../assets/pe-page/svgs/pe-chart.svg"
+                                class="pe-chart-img"
+                                alt="Pocket Electronic variable font axis chart showing DOTW and BARW"
+                            >
+                        </div>
+                        <div class="pe-variable-text">
+                            <p>
+                                Two axes. Endless moods.
+                            </p>
+                            <p>
+                                The DOT axis shifts the circular terminals between perfect spheres and crisp squares. The BAR axis works on the stroke connectors — rounding the joints or sharpening them back to corners.
+                            </p>
+                            <p>
+                                Mix and match: soft dots with sharp bars feel relaxed but precise. Sharp dots with round bars feel retrofuturist. Every combination has a different character.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+            </div><!-- /#pe-page -->
+        </div><!-- /.bb-content -->
+
         <script src="../scripts/pe.js"></script>
 
     </body>

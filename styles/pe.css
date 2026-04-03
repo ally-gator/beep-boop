@@ -1,0 +1,378 @@
+/* ==========================================================
+   POCKET ELECTRONIC PAGE — pe.css
+   Page-specific styles for fonts/pe.html
+   ========================================================== */
+
+/* CSS Variables */
+:root {
+    --pe-green:   #01924f;
+    --pe-blue:    #3676b8;
+    --pe-black:   #000000;
+    --pe-bg:      #ebbdb0;
+    --grid-green: rgba(1, 146, 79, 0.18);
+    --grid-blue:  rgba(54, 118, 184, 0.18);
+    --section-gap: 3rem;
+}
+
+/* ==========================================================
+   PAGE WRAPPER
+   ========================================================== */
+
+#pe-page {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-gap);
+    width: 100%;
+}
+
+/* ==========================================================
+   SECTION 1 — HERO
+   ========================================================== */
+
+#pe-hero {
+    width: 100%;
+    padding: 1.5rem;
+}
+
+.pe-hero-title {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ==========================================================
+   SECTION 2 — SCROLL ANIMATION + ABOUT TEXT
+   ========================================================== */
+
+#pe-about {
+    width: 100%;
+    padding: 1.5rem;
+    min-height: 100vh;   /* tall container gives scroll travel for 101 frames */
+}
+
+.pe-about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+/* Animation column — stays visible while user scrolls through the section */
+.pe-anim-col {
+    position: sticky;
+    top: 2rem;
+}
+
+.pe-anim-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.5;
+    border: 3px solid var(--pe-black);
+}
+
+/* About text — green-ruled lined paper */
+.pe-about-text {
+    font-family: monospace;
+    font-size: 10px;
+    line-height: 30px;
+    background: repeating-linear-gradient(
+        transparent 0,
+        transparent 8px,
+        var(--grid-green) 0px,
+        var(--grid-green) 30px
+    );
+    padding: 0 1rem 1rem;
+}
+
+.pe-about-text .font-name {
+    font-family: monospace;
+    font-size: 10px;
+    display: block;
+    margin-bottom: 0;
+}
+
+.pe-about-text br {
+    display: none;
+}
+
+.pe-about-text p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.pe-about-text p + p {
+    margin-top: 30px;
+}
+
+/* ==========================================================
+   SECTION 3 — TYPE TESTER (DASHED SLIDERS + NOTEPAD)
+   ========================================================== */
+
+#pe-tester {
+    width: 100%;
+}
+
+/* --- Control Panel --- */
+
+.pe-control-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.pe-slider-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.pe-slider-row h2 {
+    font-family: monospace;
+    font-size: 0.75rem;
+    font-weight: normal;
+    white-space: nowrap;
+    letter-spacing: 0.08em;
+}
+
+/* Icon rows — icons are absolutely positioned so slider fills full column width */
+.pe-slider-icon-row {
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+}
+
+.pe-slider-icon-row .pe-svg {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.pe-slider-icon-row .pe-svg:first-child { left: 0; }
+.pe-slider-icon-row .pe-svg:last-child  { right: 0; }
+
+/* Dashed slider track */
+.pe-slider-row input[type='range'] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    flex: 1;
+    cursor: pointer;
+    height: 20px;
+}
+
+.pe-slider-row input[type='range']::-webkit-slider-runnable-track {
+    height: 2px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--pe-black) 0,
+        var(--pe-black) 5px,
+        transparent 5px,
+        transparent 10px
+    );
+}
+
+.pe-slider-row input[type='range']::-moz-range-track {
+    height: 2px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--pe-black) 0,
+        var(--pe-black) 5px,
+        transparent 5px,
+        transparent 10px
+    );
+    border: none;
+}
+
+.pe-slider-row input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--pe-black);
+    margin-top: -6px;
+    cursor: pointer;
+}
+
+.pe-slider-row input[type='range']::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--pe-black);
+    border: none;
+    cursor: pointer;
+}
+
+/* --- Notepad --- */
+
+.pe-notepad-wrapper {
+    position: relative;
+    margin-top: 0.25rem;
+    isolation: isolate;
+}
+
+/* Shadow page */
+.pe-notepad-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 3px solid var(--pe-black);
+    background: rgba(1, 146, 79, 0.12);
+    transform: translate(12px, 12px);
+    z-index: 0;
+}
+
+.pe-notepad {
+    position: relative;
+    z-index: 2;
+    border: 3px solid var(--pe-black);
+    background:
+        var(--pe-bg)
+        repeating-linear-gradient(
+            transparent 0,
+            transparent 27px,
+            var(--grid-green) 27px,
+            var(--grid-green) 30px
+        );
+    padding: 0 1.5rem 2rem 4rem;
+    min-height: 250px;
+}
+
+/* Perforation line — ring-binder dashes */
+.pe-notepad-perf {
+    height: 24px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--pe-black) 0,
+        var(--pe-black) 8px,
+        transparent 8px,
+        transparent 63px
+    );
+    background-position: center;
+    margin-bottom: 1rem;
+    transform: translate(-1px, -15px);
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+/* Blue margin line */
+.pe-notepad::before {
+    content: '';
+    position: absolute;
+    left: 3rem;
+    top: 0;
+    bottom: 0;
+    border-left: 3px solid var(--grid-blue);
+    z-index: 3;
+}
+
+/* Typing area */
+#pe-area {
+    font-family: 'pe-vf', monospace;
+    font-variation-settings: 'DOTW' 0, 'BARW' 0;
+}
+
+#pe-text     { display: block; }
+#pe-text-mob { display: none; }
+
+#pe-tester .typing-area {
+    text-align: left;
+    overflow: visible;
+    outline: none;
+    color: var(--pe-black);
+    font-size: 60px;
+    line-height: 80px;
+}
+
+/* ==========================================================
+   SECTION 4 — CHART + VARIABILITY TEXT
+   ========================================================== */
+
+#pe-variable {
+    padding: 1.5rem 0;
+}
+
+.pe-variable-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.pe-chart-box {
+    border: 3px solid var(--pe-black);
+    padding: 1.5rem;
+    background: var(--pe-bg);
+}
+
+.pe-chart-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.pe-variable-text {
+    font-family: monospace;
+    font-size: 10px;
+    line-height: 30px;
+    background: repeating-linear-gradient(
+        transparent 0,
+        transparent 18px,
+        var(--grid-green) 0px,
+        var(--grid-green) 30px
+    );
+    padding: 0 1rem 1rem;
+}
+
+.pe-variable-text p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.pe-variable-text p + p {
+    margin-top: 30px;
+}
+
+/* ==========================================================
+   MOBILE STYLES — max-width: 576px
+   ========================================================== */
+
+@media (max-width: 576px) {
+
+    /* --- SECTION 2: Single column, no sticky --- */
+    #pe-about {
+        min-height: auto;   /* remove tall container on mobile */
+    }
+
+    .pe-about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pe-anim-col {
+        position: static;   /* disable sticky on mobile */
+    }
+
+    /* --- SECTION 3: Stacked sliders (1 column), hide LEADING --- */
+    .pe-control-panel             { grid-template-columns: 1fr; }
+    .pe-slider-row:nth-child(2)   { display: none; }   /* hide LEADING */
+
+    #pe-tester .typing-area {
+        line-height: 1.2;
+    }
+
+    /* Text swap */
+    #pe-text     { display: none; }
+    #pe-text-mob { display: block; }
+
+    /* --- SECTION 4: Single column --- */
+    .pe-variable-layout { grid-template-columns: 1fr; }
+
+}
