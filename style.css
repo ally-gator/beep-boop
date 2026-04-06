@@ -58,6 +58,11 @@ header {
     margin-bottom: 20px; /* Adjust this value to your preference */
 }
 
+.nav-footer-logo {
+    margin-top: auto;
+    width: 100px;
+}
+
 /* Style for the anchor links */
 .nav-item a {
     display: inline-block;
@@ -116,6 +121,10 @@ header {
     .nav-item:first-child {
         margin-bottom: 0;
         margin-right: 5px;
+    }
+
+    .nav-footer-logo {
+        display: none;
     }
 
     .nav-item:first-child img {
