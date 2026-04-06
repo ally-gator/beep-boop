@@ -69,34 +69,35 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('resize', updateSliderValuesForMobile);
 
     // =========================================================
-    // SCROLL ANIMATION — 101-frame webp sequence
+    // FRAME ANIMATION — 61-frame webp sequence, continuous loop
     // =========================================================
 
-    const frameCount = 101;
+    const frameCount = 61;
 
     // Preload all frames so swaps are instant
     const frames = Array.from({ length: frameCount }, (_, i) => {
         const img = new Image();
-        img.src = `../assets/pe-page/webp-spec/H_3D_Render.${String(i).padStart(5, '0')}.webp`;
+        img.src = `../assets/pe-page/webp-spec-02/H_3D_V2.${String(i).padStart(5, '0')}.webp`;
         return img;
     });
 
-    const animImg     = document.getElementById('pe-anim-img');
-    const animSection = document.getElementById('pe-about');
+    const animImg = document.getElementById('pe-anim-img');
 
-    window.addEventListener('scroll', () => {
-        const rect = animSection.getBoundingClientRect();
-        // Start animation when section is halfway up from the bottom of the viewport
-        const triggerOffset = window.innerHeight * 0.5;
-        const scrollable    = animSection.offsetHeight - window.innerHeight + triggerOffset;
-        if (scrollable <= 0) return;
+    let frameIdx  = 0;
+    let lastTime  = 0;
+    const frameInterval = 1000 / 12; // 12fps
 
-        const progress = Math.max(0, Math.min(1, (triggerOffset - rect.top) / scrollable));
-        const idx      = Math.min(frameCount - 1, Math.floor(progress * frameCount));
-
-        if (frames[idx] && frames[idx].complete) {
-            animImg.src = frames[idx].src;
+    function tick(timestamp) {
+        if (timestamp - lastTime >= frameInterval) {
+            if (frames[frameIdx]?.complete) {
+                animImg.src = frames[frameIdx].src;
+            }
+            frameIdx = (frameIdx + 1) % frameCount;
+            lastTime = timestamp;
         }
-    }, { passive: true });
+        requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
 
 });

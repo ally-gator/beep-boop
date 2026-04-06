@@ -45,23 +45,24 @@
    SECTION 2 — SCROLL ANIMATION + ABOUT TEXT
    ========================================================== */
 
+.pe-about-wrapper {
+    position: relative;
+}
+
 #pe-about {
     width: 100%;
     padding: 1.5rem;
-    min-height: 100vh;   /* tall container gives scroll travel for 101 frames */
 }
 
 .pe-about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
-    align-items: start;
+    align-items: center;
 }
 
-/* Animation column — stays visible while user scrolls through the section */
 .pe-anim-col {
-    position: sticky;
-    top: 2rem;
+    position: static;
 }
 
 .pe-anim-img {
@@ -79,7 +80,7 @@
     line-height: 30px;
     background: repeating-linear-gradient(
         transparent 0,
-        transparent 8px,
+        transparent 18px,
         var(--grid-green) 0px,
         var(--grid-green) 30px
     );
@@ -127,7 +128,8 @@
 
 .pe-slider-row {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
     gap: 0.5rem;
 }
 
@@ -139,23 +141,24 @@
     letter-spacing: 0.08em;
 }
 
-/* Icon rows — icons are absolutely positioned so slider fills full column width */
+/* Icon rows — SVGs sit in-flow as flex items flanking the slider */
 .pe-slider-icon-row {
-    position: relative;
+    display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 0;
+    gap: 20px;
 }
 
 .pe-slider-icon-row .pe-svg {
-    position: absolute;
-    width: 20px;
     height: 20px;
-    top: 50%;
-    transform: translateY(-50%);
+    flex-shrink: 0;
+    display: block;
 }
-.pe-slider-icon-row .pe-svg:first-child { left: 0; }
-.pe-slider-icon-row .pe-svg:last-child  { right: 0; }
+
+/* Offset Row 1 slider tracks to align with Row 2 (icon 20px + gap 8px = 28px each side) */
+.pe-slider-row input[type='range'] {
+    max-width: 350px;
+}
 
 /* Dashed slider track */
 .pe-slider-row input[type='range'] {
@@ -278,6 +281,7 @@
 #pe-area {
     font-family: 'pe-vf', monospace;
     font-variation-settings: 'DOTW' 0, 'BARW' 0;
+    height: auto;   /* overrides legacy height: 100px in style.css */
 }
 
 #pe-text     { display: block; }
@@ -285,7 +289,6 @@
 
 #pe-tester .typing-area {
     text-align: left;
-    overflow: visible;
     outline: none;
     color: var(--pe-black);
     font-size: 60px;
@@ -347,17 +350,9 @@
 
 @media (max-width: 576px) {
 
-    /* --- SECTION 2: Single column, no sticky --- */
-    #pe-about {
-        min-height: auto;   /* remove tall container on mobile */
-    }
-
+    /* --- SECTION 2: Single column --- */
     .pe-about-grid {
         grid-template-columns: 1fr;
-    }
-
-    .pe-anim-col {
-        position: static;   /* disable sticky on mobile */
     }
 
     /* --- SECTION 3: Stacked sliders (1 column), hide LEADING --- */

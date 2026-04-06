@@ -86,7 +86,7 @@ header {
     width: calc(100% - 210px);
     position: relative;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow-x: clip;   /* clip without creating a scroll container — keeps position:sticky working */
 }
 
 
@@ -271,6 +271,7 @@ header {
     font-family: pe-vf, monospace;
     font-size: 11rem;
     margin-bottom: 5px;
+    transform: translateX(13px);
     font-variation-settings: 'DOTW' 0, 'BARW' 100;
     animation: pe-morph 4s ease-in-out infinite;
     animation-play-state: paused;
@@ -280,6 +281,7 @@ header {
     font-family: kilt-vf, monospace;
     font-size: 13rem;
     font-variation-settings: 'wght' 100;
+    transform: translateX(10px);
     margin-bottom: -15px;
     animation: weight-pulse 3s ease-in-out infinite;
     animation-play-state: paused;
@@ -306,6 +308,7 @@ header {
 #font-toybox .font-name {
     font-family: toy-box, monospace;
     font-size: 11rem;
+    transform: translateX(10px);
     font-variation-settings: 'HOLE' 0;
     animation: hole-pulse 3s ease-in-out infinite;
     animation-play-state: paused;
@@ -405,101 +408,7 @@ header {
 
 /*Font Pages*/
 
-/* Font Specimen */
-
-#matter-container {
-    width: 100%;
-    height: 400px;
-    overflow: hidden;
-    background-size: 20px 20px;
-    background-image:
-    linear-gradient(to right, black 1px, transparent 1px),
-    linear-gradient(to bottom, black 1px, transparent 1px);
-    background-color: #ededed;
-    margin-top: 50px;
-}
-
-#svgs {
-    display: none;
-}
-
-/* Type Tester */
-
-.bb-tester{
-    margin: 50px 0px;
-    width: 100%;
-    border: 1px solid black;
-    padding: 20px;
-}
-
-.control-panel {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-bottom: 10px;
-    padding-left: 15px;
-  }
-
-.control-panel > div {
-    background-color: #ededed;
-    padding: 10px 0px;
-    font-size: 0.6em;
-    white-space: nowrap;
-}
-
-.control-panel > div:last-child {
-    border-right: none;
-}
-  
-.range-slider{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: auto;
-    margin-right: 4em;
-}
-
-.range-slider h2{
-    font-family: Helvetica, sans-serif;
-    font-weight: normal;
-    margin-right: 1em;
-}
-
-.range-value{
-    padding-left: 1em;
-}
-
-.color-btns {
-    align-items: left;
-}
-
-.range-slider-bar {
-    -webkit-appearance: none;
-    width: 180px;
-    height: 100%;
-    border-radius: 20px;
-    border: 1px solid black;
-    background: #ededed;
-}
-  
-.range-slider-bar::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: black;
-    border: 2px solid black;
-    cursor: pointer;
-    box-shadow: none;
-}
-
 /* PE-Slider-Icons */
-
-.pe-svg{
-    height: 12px;
-    width: auto;
-    padding: 0px 10px;
-}
   
 .typing-area {
     color: #000000;
@@ -527,23 +436,6 @@ header {
     overflow: hidden;
 }
 
-/* PE Tester Layout */
-#pe-tester {
-    width: 100%;
-    margin: 50px 0;
-}
-
-#pe-tester .control-panel > div {
-    background-color: #ebbdb0;
-}
-
-#d2d-text, #pe-text{
-    display: block;
-}
-
-#d2d-text-mob, #pe-text-mob{
-    display: none;
-}
 
 
 
