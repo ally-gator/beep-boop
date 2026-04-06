@@ -188,11 +188,18 @@ function init() {
 }
 
 // ── RESIZE & RESET ─────────────────────────────────────────
+// Only reinitialise when the container WIDTH changes — a real layout event
+// (window resize, orientation flip). Ignore height-only fluctuations caused
+// by mobile browsers showing/hiding the URL bar on scroll.
 
 let resizeTimer;
+let prevW = 0;
 window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
+        const newW = matterContainer.clientWidth;
+        if (newW === prevW) return;
+        prevW = newW;
         updateDimensions();
         init();
     }, 150);
@@ -208,3 +215,4 @@ _canvas.addEventListener('dblclick', () => {
 updateDimensions();
 loop();
 init();
+prevW = W; // capture initial width so first resize check is accurate

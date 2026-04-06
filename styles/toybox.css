@@ -314,11 +314,11 @@
     line-height: 30px;
     background: repeating-linear-gradient(
         transparent 0,
-        transparent 3px,
+        transparent 18px,
         var(--grid-yellow) 0px,
         var(--grid-yellow) 30px
     );
-    padding: 1rem;
+    padding: 0 1rem 1rem;
 }
 
 .tb-specimen-text p {
@@ -369,11 +369,11 @@
     line-height: 30px;
     background: repeating-linear-gradient(
         transparent 0,
-        transparent 3px,
+        transparent 18px,
         var(--grid-yellow) 0px,
         var(--grid-yellow) 30px
     );
-    padding: 1rem;
+    padding: 0 1rem 1rem;
 }
 
 .tb-construction-text p {
@@ -455,7 +455,6 @@
 
     .tb-duck {
         width: 44px;
-        bottom: -22px;
     }
 
     #tb-matter {

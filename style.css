@@ -148,6 +148,41 @@ header {
     /* Remove grid-column here since parent selector handles it */
 }
 
+/* Toy Box "New" badges */
+#font-toybox {
+    position: relative;
+}
+
+.badge-new {
+    position: absolute;
+    top: -30px;
+    left: 20px;
+    width: 150px;
+    z-index: 10;
+    animation: badge-pulse 2s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.badge-smiley {
+    position: absolute;
+    bottom: -30px;
+    right: 20px;
+    width: 150px;
+    z-index: 10;
+    animation: badge-rock 2.5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes badge-pulse {
+    0%, 100% { transform: scale(1); }
+    50%       { transform: scale(1.12); }
+}
+
+@keyframes badge-rock {
+    0%, 100% { transform: rotate(-12deg); }
+    50%       { transform: rotate(12deg); }
+}
+
 /* Individual font header */
 .font-header {
     display: flex;
@@ -330,6 +365,18 @@ header {
     .border-corner-right {
         width: 100px;
         height: 200px;
+    }
+
+    .badge-smiley{
+        width: 60px;
+        bottom: -10px;
+        right: 10px;
+    }
+
+    .badge-new{
+        width: 60px;
+        top: -10px;
+        left: 5px;
     }
     
     .font-header-top-border,
