@@ -101,7 +101,7 @@ header {
         width: 100%;
         min-height: auto;
         border-right: none;
-        border-bottom: 3px solid black;
+        border-bottom: 1px solid black;
         padding: 15px 20px;
     }
 
@@ -109,7 +109,7 @@ header {
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: space-between;
-        gap: 9px;
+        gap: 8px;
         align-items: center;
     }
 
@@ -120,12 +120,12 @@ header {
 
     .nav-item:first-child img {
         margin-top: 2px;
-        height: 36px;
+        height: 33px;
     }
 
     .nav-item:not(:first-child) img {
         margin-top: 5px;
-        height: 27px;
+        height: 28px;
     }
 
     .bb-content {
@@ -368,32 +368,33 @@ header {
         height: 8px;
     }
 
-    .font-name {
-        font-size: 18vw;
-    }
-
     .font-info {
         min-height: 0;
+        gap: 5px;
         padding-bottom: 3px;
     }
 
     #font-pe .font-name {
         font-size: 15vw;
+        transform: translateX(5px);
         margin-bottom: 0;
     }
 
     #font-kilt .font-name {
         font-size: 16vw;
+        transform: translateX(7px);
+        transform: translateY(5px);
         margin-bottom: 0;
     }
 
     #font-toybox .font-name {
         font-size: 15vw;
+        transform: translateX(4px);
         margin-bottom: 0;
     }
 
     .font-meta {
-        font-size: 11px;
+        font-size: 7px;
         gap: 8px;
         flex-direction: row;
         justify-content: center;
