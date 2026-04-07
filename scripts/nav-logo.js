@@ -1,13 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Mobile uses the static SVG — skip animation entirely
-  if (window.matchMedia('(max-width: 575px)').matches) return;
+  // Resolve base path — works from root pages and fonts/ subpages
+  const depth = window.location.pathname.includes('/fonts/') ? '../' : '';
+
+  const logo = document.getElementById('nav-logo');
+  if (!logo) return;
+
+  // Mobile: swap to static SVG and skip animation
+  if (window.matchMedia('(max-width: 575px)').matches) {
+    logo.src = `${depth}assets/logos/bb_sk8board.svg`;
+    return;
+  }
 
   const FRAME_COUNT = 24;
   const FPS = 24;
   const FRAME_MS = 1000 / FPS;
 
-  // Resolve base path — works from root pages and fonts/ subpages
-  const depth = window.location.pathname.includes('/fonts/') ? '../' : '';
   const frameSrc = (i) =>
     `${depth}assets/logos/SK8BRD-FLIP/SK8BRD-FLIP_${String(i).padStart(3, '0')}.png`;
 
@@ -17,9 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
     img.src = frameSrc(i);
     return img;
   });
-
-  const logo = document.getElementById('nav-logo');
-  if (!logo) return;
 
   let currentFrame = 0;
   let rafId = null;
@@ -66,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function onEnter() {
-    // Always restart forward from current position
     if (rafId) cancelAnimationFrame(rafId);
     state = 'forward';
     lastTime = null;
