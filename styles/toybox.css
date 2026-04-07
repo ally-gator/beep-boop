@@ -11,7 +11,8 @@
     --tb-yellow:      #ffaf38;
     --tb-black:       #000000;
     --tb-bg:          #ebbdb0;
-    --grid-yellow:    rgba(255, 175, 56, 0.25);
+    --grid-yellow:    rgba(255, 175, 56, 1);
+    --text-red:       rgba(216, 45, 25, 0.18);
     --section-gap:    3rem;
 }
 
@@ -33,7 +34,7 @@
 
 #tb-hero {
     width: 100%;
-    padding: 1.5rem;
+    /* padding: 1.5rem; */
 }
 
 .tb-hero-title {
@@ -48,23 +49,23 @@
 
 #tb-about {
     width: 100%;
-    padding: 1.5rem;
+    /* padding: 1.5rem; */
     position: relative;   /* anchor the duck */
 }
 
 .tb-about-text {
-    font-family: monospace;
-    font-size: 10px;
+    font-family: UniFont;
+    font-size: 20px;
     line-height: 30px;   /* explicit px — must match gradient period exactly */
     max-width: 600px;
     margin: 0 auto;
     background: repeating-linear-gradient(
         transparent 0,
-        transparent 18px,
+        transparent 1px,
         var(--grid-yellow) 0px,
         var(--grid-yellow) 30px
     );
-    padding: 0 1rem 1rem;
+    padding: 0 1rem 0;
 }
 
 .tb-about-text p {
@@ -142,20 +143,23 @@
     padding-top: 1rem;
     padding-bottom: 1rem;
     margin-bottom: 0.5rem;
+    transform: translateY(7px);
 }
 
 .tb-slider-row {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-content: center;
     gap: 0.5rem;
 }
 
 .tb-slider-row h2 {
-    font-family: monospace;
-    font-size: 0.75rem;
+    font-family: Unifont, monospace;
+    font-size: 1.2rem;
     font-weight: normal;
     white-space: nowrap;
     letter-spacing: 0.08em;
+    transform: translateY(-2px);
 }
 
 /* Dashed slider track */
@@ -240,8 +244,8 @@
         repeating-linear-gradient(
             transparent 0,
             transparent 27px,
-            var(--grid-yellow) 27px,
-            var(--grid-yellow) 30px
+            var(--text-red) 27px,
+            var(--text-red) 30px
         );
     padding: 0 1.5rem 2rem 4rem;
     min-height: 250px;
@@ -271,7 +275,7 @@
     left: 3rem;
     top: 0;
     bottom: 0;
-    border-left: 3px solid color-mix(in srgb, var(--kilt-blue) 18%, transparent);
+    border-left: 3px solid color-mix(in srgb, var(--kilt-blue) 100%, transparent);
     z-index: 3;
 }
 
@@ -309,16 +313,16 @@
 }
 
 .tb-specimen-text {
-    font-family: monospace;
-    font-size: 10px;
-    line-height: 30px;
+    font-family: UniFont;
+    font-size: 20px;
+    line-height: 30px;   /* explicit px — must match gradient period exactly */
     background: repeating-linear-gradient(
         transparent 0,
-        transparent 18px,
+        transparent 1px,
         var(--grid-yellow) 0px,
         var(--grid-yellow) 30px
     );
-    padding: 0 1rem 1rem;
+    padding: 0 1rem 0;
 }
 
 .tb-specimen-text p {
@@ -364,16 +368,16 @@
 }
 
 .tb-construction-text {
-    font-family: monospace;
-    font-size: 10px;
-    line-height: 30px;
-    background: repeating-linear-gradient(
+   font-family: UniFont;
+   font-size: 20px;
+   line-height: 30px;   /* explicit px — must match gradient period exactly */
+   background: repeating-linear-gradient(
         transparent 0,
-        transparent 18px,
+        transparent 1px,
         var(--grid-yellow) 0px,
         var(--grid-yellow) 30px
     );
-    padding: 0 1rem 1rem;
+    padding: 0 1rem 0;
 }
 
 .tb-construction-text p {
@@ -445,10 +449,7 @@
 
 @media (max-width: 576px) {
 
-    #tb-about { margin-top: -4rem; }
-
     .tb-about-text {
-        font-size: 10px;
         line-height: 30px;
         max-width: 100%;
     }

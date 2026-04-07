@@ -34,7 +34,7 @@
 
 #kilt-hero {
     width: 100%;
-    padding: 1.5rem;
+    /* padding: 1.5rem; */
 }
 
 .kilt-hero-title {
@@ -49,7 +49,7 @@
 
 #kilt-about {
     width: 100%;
-    padding: 1.5rem;
+    /* padding: 1.5rem; */
     /* no background — grid is embedded in kilt_gloves.svg */
 }
 
@@ -76,16 +76,16 @@
 }
 
 .kilt-about-text {
-    font-family: monospace;
-    font-size: 10px;
+    font-family: Unifont, monospace;
+    font-size: 20px;
     line-height: 30px;   /* explicit px — must match gradient period exactly */
     background: repeating-linear-gradient(
         transparent 0,
-        transparent 18px,
-        var(--grid-red) 0px,
-        var(--grid-red) 30px
+        transparent 1px,
+        var(--kilt-red) 0px,
+        var(--kilt-red) 30px
     );
-    padding: 0 1rem 1rem;   /* no top padding — anchors line 1 to first rule */
+    padding: 0 1rem 0;   /* no top padding — anchors line 1 to first rule */
 }
 
 .kilt-about-text .font-name {
@@ -128,20 +128,22 @@
     padding-top: 1rem;
     padding-bottom: 1rem;
     margin-bottom: 0.5rem;
+    transform: translateY(7px);
 }
 
 .kilt-slider-row {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 0.5rem;
 }
 
 .kilt-slider-row h2 {
-    font-family: monospace;
-    font-size: 0.75rem;
+    font-family: Unifont, monospace;
+    font-size: 1.2rem;
     font-weight: normal;
     white-space: nowrap;
     letter-spacing: 0.08em;
+    transform: translateY(-3px);
 }
 
 /* Dashed slider track */
@@ -269,7 +271,7 @@
     left: 3rem;
     top: 0;
     bottom: 0;
-    border-left: 3px solid var(--grid-blue);   /* matches horizontal ruled-line weight/opacity */
+    border-left: 3px solid var(--kilt-blue);   /* matches horizontal ruled-line weight/opacity */
     z-index: 3;
 }
 
@@ -321,16 +323,16 @@
 
 .kilt-specimen-text {
     order: 1;   /* left column on desktop — restores position after HTML reorder */
-    font-family: monospace;
-    font-size: 0.85rem;
-    line-height: 1.6;
+    font-family: Unifont, monospace;
+    font-size: 20px;
+    line-height: 30px;   /* explicit px — must match gradient period exactly */
     background: repeating-linear-gradient(
         transparent 0,
-        transparent 27px,
-        var(--grid-red) 27px,
-        var(--grid-red) 30px
+        transparent 1px,
+        var(--kilt-red) 0px,
+        var(--kilt-red) 30px
     );
-    padding: 1rem;
+    padding: 0 1rem 0;   /* no top padding — anchors line 1 to first rule */
 }
 
 .kilt-specimen-box {
@@ -384,16 +386,16 @@
 }
 
 .kilt-construction-text {
-    font-family: monospace;
-    font-size: 0.85rem;
-    line-height: 1.6;
+    font-family: Unifont, monospace;
+    font-size: 20px;
+    line-height: 30px;   /* explicit px — must match gradient period exactly */
     background: repeating-linear-gradient(
         transparent 0,
-        transparent 27px,
-        var(--grid-red) 27px,
-        var(--grid-red) 30px
+        transparent 1px,
+        var(--kilt-red) 0px,
+        var(--kilt-red) 30px
     );
-    padding: 1rem;
+    padding: 0 1rem 0;   /* no top padding — anchors line 1 to first rule */
 }
 
 /* ==========================================================
@@ -459,19 +461,11 @@
 
 @media (max-width: 576px) {
 
-    /* --- SECTION 1→2: Tighten hero-to-about gap --- */
-    #kilt-about { margin-top: -4rem; }
 
     .kilt-about-text {
-        font-size: 10px;
-        line-height: 30px;   /* explicit px — must match gradient period exactly */
-        background: repeating-linear-gradient(
-            transparent 0,
-            transparent 18px,
-            var(--grid-red) 0px,
-            var(--grid-red) 30px
-        );
-        padding: 0 1rem 1rem;
+        font-size: 15px;
+        color: black;
+        
     }
 
     /* --- SECTION 2: Hide gloves, single column --- */

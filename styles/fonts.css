@@ -1,21 +1,6 @@
 /* fonts */
 
 @font-face {
-    font-family: 'dot2dot';
-    src: url('../assets/fonts/dot2dot/WOFF/dot2dot-Regular.woff2') format('woff2'),
-         url('../assets/fonts/dot2dot/WOFF/dot2dot-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'NectoMono';
-    src: url('../assets/fonts/CLT-NectoMono/NectoMono-Regular.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-}
-
-@font-face {
     font-family: 'UniFont';
     src: url('../assets/fonts/Unifont/unifont-17.0.03.woff2') format('woff2');
     font-weight: 700;
