@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Mobile uses the static SVG — skip animation entirely
+  if (window.matchMedia('(max-width: 575px)').matches) return;
+
   const FRAME_COUNT = 24;
   const FPS = 24;
   const FRAME_MS = 1000 / FPS;
