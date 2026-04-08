@@ -12,7 +12,7 @@
     --grid-green: rgba(1, 146, 79, 1);
     --grid-blue:  rgba(54, 118, 184, 1);
     --text-red:   rgba(216, 45, 25, 0.18);
-    --section-gap: 3rem;
+    --section-gap: 5rem;
 }
 
 /* ==========================================================
@@ -79,7 +79,7 @@
     line-height: 30px;
     background: repeating-linear-gradient(
         transparent 0,
-        transparent 1px,
+        transparent 27px,
         var(--grid-green) 0px,
         var(--grid-green) 30px
     );
@@ -319,7 +319,7 @@
     line-height: 30px;
     background: repeating-linear-gradient(
         transparent 0,
-        transparent 1px,
+        transparent 27px,
         var(--grid-green) 0px,
         var(--grid-green) 30px
     );
@@ -361,4 +361,35 @@
     /* --- SECTION 4: Single column --- */
     .pe-variable-layout { grid-template-columns: 1fr; }
 
+}
+
+
+/* ==========================================================
+   DOWNLOAD BUTTON
+   ========================================================== */
+
+.download-btn-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0 4rem;
+}
+
+.font-download-btn {
+    display: block;
+    width: 120px;
+}
+
+.font-download-btn img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.font-download-btn .dwnload-state2 { display: none; }
+
+.font-download-btn:hover .dwnload-state1 { display: none; }
+.font-download-btn:hover .dwnload-state2 { display: block; }
+
+@media (max-width: 768px) {
+    .download-btn-wrap { display: none; }
 }

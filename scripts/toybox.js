@@ -56,10 +56,10 @@ document.addEventListener('DOMContentLoaded', function () {
             updateSize(42);
         } else {
             document.getElementById('size-slider').max    = '240';
-            document.getElementById('size-slider').value  = '120';
+            document.getElementById('size-slider').value  = '72';
             document.getElementById('leading-slider').max   = '300';
-            document.getElementById('leading-slider').value = '150';
-            updateSize(120);
+            document.getElementById('leading-slider').value = '72';
+            updateSize(72);
         }
     };
 

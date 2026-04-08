@@ -13,7 +13,7 @@
     --tb-bg:          #ebbdb0;
     --grid-yellow:    rgba(255, 175, 56, 1);
     --text-red:       rgba(216, 45, 25, 0.18);
-    --section-gap:    3rem;
+    --section-gap:    5rem;
 }
 
 /* ==========================================================
@@ -61,7 +61,7 @@
     margin: 0 auto;
     background: repeating-linear-gradient(
         transparent 0,
-        transparent 1px,
+        transparent 27px,
         var(--grid-yellow) 0px,
         var(--grid-yellow) 30px
     );
@@ -293,8 +293,8 @@
     overflow: visible;
     outline: none;
     color: var(--tb-black);
-    font-size: 120px;
-    line-height: 150px;
+    font-size: 72px;
+    line-height: 72px;
 }
 
 /* ==========================================================
@@ -318,7 +318,7 @@
     line-height: 30px;   /* explicit px — must match gradient period exactly */
     background: repeating-linear-gradient(
         transparent 0,
-        transparent 1px,
+        transparent 27px,
         var(--grid-yellow) 0px,
         var(--grid-yellow) 30px
     );
@@ -373,7 +373,7 @@
    line-height: 30px;   /* explicit px — must match gradient period exactly */
    background: repeating-linear-gradient(
         transparent 0,
-        transparent 1px,
+        transparent 27px,
         var(--grid-yellow) 0px,
         var(--grid-yellow) 30px
     );
@@ -488,4 +488,35 @@
         padding: 8px;
     }
 
+}
+
+
+/* ==========================================================
+   DOWNLOAD BUTTON
+   ========================================================== */
+
+.download-btn-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0 4rem;
+}
+
+.font-download-btn {
+    display: block;
+    width: 120px;
+}
+
+.font-download-btn img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.font-download-btn .dwnload-state2 { display: none; }
+
+.font-download-btn:hover .dwnload-state1 { display: none; }
+.font-download-btn:hover .dwnload-state2 { display: block; }
+
+@media (max-width: 768px) {
+    .download-btn-wrap { display: none; }
 }

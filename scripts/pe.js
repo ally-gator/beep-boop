@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Preload all frames so swaps are instant
     const frames = Array.from({ length: frameCount }, (_, i) => {
         const img = new Image();
-        img.src = `../assets/pe-page/webp-spec-02/H_3D_V2.${String(i).padStart(5, '0')}.webp`;
+        img.src = `../assets/pe-page/webp-spec-03/H_3D_Render basic.${String(i).padStart(5, '0')}.webp`;
         return img;
     });
 
