@@ -819,6 +819,30 @@ header {
     transform: translateX(12px);
 }
 
+/* Welcome message — floating rocking element */
+.wlcm-msg {
+    position: fixed;
+    bottom: 100px;
+    left: 100px;
+    width: 190px;
+    z-index: 9999;
+    cursor: grab;
+    transform-origin: 50% 90%;
+    animation: wlcm-rock 3s ease-in-out infinite;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.wlcm-msg.is-dragging {
+    cursor: grabbing;
+    animation: none;
+}
+
+@keyframes wlcm-rock {
+    0%, 100% { transform: scale(0.95); }
+    50%       { transform: scale(1); }
+}
+
 /*Journal - Mob*/
 @media (max-width: 576px){
     #journal-title{
