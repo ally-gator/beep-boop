@@ -84,6 +84,7 @@
     left: 6%;
     width: 60px;
     height: auto;
+    transform: translateY(33px);
     z-index: 10;
 }
 
